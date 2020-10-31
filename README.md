@@ -1,4 +1,4 @@
-# MERN Inteventory Trackeer
+# MERN Inventory Tracker
 Group project for UCI Bootcamp program with Amin Bouzoita, Crystal Han, Eric Folenta, Josh Sandberg, and Spencer Smith
 
 ## Table of Contents
