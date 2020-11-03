@@ -1,9 +1,6 @@
 import './App.css';
-import SignInPage from "./pages/SignIn";
-
-
 function App() {
-
+  return;
 }
 
 export default App;
