@@ -1,9 +1,9 @@
 import React from "react";
-import SignIn from "../components/SignIn/index";
+import SignUp from "../components/SignUp/index";
 
 function SignInPage() {
   return(
-    <SignIn />
+    <SignUp />
   );
 }
 
