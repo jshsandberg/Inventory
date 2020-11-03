@@ -1,3 +1,7 @@
+//resources
+//url: http://devsmash.com/blog/implementing-max-login-attempts-with-mongoose
+//adding mongoose password authentication plus user lock
+
 const mongoose = require("mongoose"),
     Schema = mongoose.Schema,
     bcrypt = require(bcrypt),
@@ -44,8 +48,20 @@ const userSchema = new Schema({
   password:{
     type:String,
     required:true
+  },
+  loginAttempts:{
+    type:Number,
+    required:true,
+    default:0
+  },
+  lockUntil:{
+    type:Number
   }
 
+});
+
+userSchema.virtual('isLocked').get(function(){
+  return !!(this.lockUntil && this.lockUntil > Date.now());
 });
 
 userSchema.pre('save', function(next){
@@ -80,6 +96,26 @@ userSchema.methods.comparePassword = function(candidatePassword, cb){
     cb(null, isMatch);
   });
 };
+
+// userSchema.methods.incLoginAttempts=function(cb){
+//   if(this.lockUntil && this.lockUntil < Date.now()){
+//     return this.update({
+//       $set: {loginAttempts:1},
+//       $unset:{lockUntil:1}
+//     },cb);
+    
+//   }
+//   var updates = {$inc:{loginAttempts:1}};
+//   if(this.loginAttempts+1 >= MAX_LOGIN_ATTEMPTS && !this.isLocked){
+//     return this.update(updates,cb);
+//   }
+// }
+
+// userSchema.statics.failedLogin = {
+//   NOT_FOUND:0,
+//   PASSWORD_INCCORECT:1,
+//   MAX_ATTEMPTS: 5
+// }
 
 const User = mongoose.model("User", userSchema);
 
