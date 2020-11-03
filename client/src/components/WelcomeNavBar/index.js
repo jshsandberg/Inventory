@@ -12,12 +12,12 @@ function WelcomeNavBar(props) {
                     Inventory
                 </a>
                 <div className="w-100 text-right">
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar7">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
                 </div>
             </div>
-            <div className="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar7">
+            <div className="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                 <ul className="navbar-nav ml-auto flex-nowrap">
                     <li className="nav-item active">
                         <a href="#" className="nav-link active">Home</a>
