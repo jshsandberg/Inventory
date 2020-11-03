@@ -3,6 +3,9 @@ const Schema = mongoose.Schema;
 
 const inventSchema = new Schema({
   title: {
+    //business name and that will give us the inventory
+    //this will give us an id
+    //business name could be the ID
     type: String,
     required: true
   },
