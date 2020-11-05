@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
-const User = require("./models/User");
-const Inventory = require("./models/Inventory");
+//const User = require("./models/User");
+//const Inventory = require("./models/Inventory");
 
 
 // Matches with "/api/users"
-router.route("/")
+router.route("/siginin")
   //.get(userController.findById)
   .post(userController.create);
 

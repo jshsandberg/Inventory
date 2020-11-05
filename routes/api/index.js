@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const userRoute = require("./user");
-const inventRoute = require("./inventory");
-const htmlRoute=require("./html-routes");
+const userRoute = require("../../models/User");
+//const inventRoute = require("./inventory");
 
 // User routes
-router.use("/", userRoute);
+router.use("/signin", userRoute);
 
 module.exports = router;

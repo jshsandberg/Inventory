@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
-const { User } = require("../models");
+const User = require("../models/user");
+const Inventory = require("../models/Inventory");
 const db = require("../models");
 const passportLocalMongoose = require('passport-local-mongoose');
 

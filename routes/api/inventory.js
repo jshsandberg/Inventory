@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const inventController = require("../../controllers/inventoryController");
-const User = require("./models/User");
-const Inventory = require("./models/Inventory");
+// const User = require("../../models/User");
+// const Inventory = require("../../models/Inventory");
 // Matches with "/api/books"
 // router.route("/")
 //   .get(inventController.findAll)
