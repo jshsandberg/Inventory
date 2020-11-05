@@ -4,8 +4,10 @@
 
 const mongoose = require("mongoose"),
     Schema = mongoose.Schema,
-    bcrypt = require(bcrypt),
+    bcrypt = require('bcrypt'),
     SALT_WORK_FACTOR=10;
+const passportLocalMongoose = require('passport-local-mongoose');
+
 
 const userSchema = new Schema({
   name: {
@@ -81,7 +83,9 @@ userSchema.pre('save', function(next){
       if(err){
         return next(err);
       }
+      console.log('HASH: ',hash);
       user.password=hash;
+      console.log('USER PASSWORD: ', user.password);
       next();
     });
   });
@@ -164,6 +168,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb){
 //   MAX_ATTEMPTS: 5
 // }
 
+//userSchema.plugin(passportLocalMongoose);
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

@@ -6,6 +6,12 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const User = require("./models/User");
 const Inventory = require("./models/Inventory");
+// use static authenticate method of model in LocalStrategy
+//passport.use(new LocalStrategy(User.authenticate()));
+
+// use static serialize and deserialize of model for passport session support
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 
 var userTest = new User({
   username:"Spencer",
