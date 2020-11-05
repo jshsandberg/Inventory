@@ -46,7 +46,7 @@ function Inventory() {
 
     return (
         <InventoryItems
-        Inventory={Inventory}
+        {...Inventory}
         > 
         </InventoryItems>
     )
