@@ -1,0 +1,12 @@
+nav{
+    margin-left: 425px;
+}
+.nav-link{ 
+    color:black;
+    font-size: 22px;
+}
+
+.nav-link:hover,
+.nav-link:active{
+    color:blue;
+}
