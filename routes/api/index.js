@@ -4,6 +4,6 @@ const inventRoute = require("./inventory");
 const htmlRoute=require("./html-routes");
 
 // User routes
-router.use("/", userRoute);
+router.use("/signup", userRoute);
 
 module.exports = router;

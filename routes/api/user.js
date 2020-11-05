@@ -2,12 +2,18 @@ const router = require("express").Router();
 const userController = require("../../controllers/userController");
 const User = require("./models/User");
 const Inventory = require("./models/Inventory");
-// Matches with "/api/books"
-router.route("/")
+// Matches with "/api/users"
+router.route("/signup")
   //.get(userController.findById)
   .post(userController.create);
 
-// Matches with "/api/books/:id"
+// Matches with "/api/users/:id"
+router
+  .route("/:id/login")
+  .get(userController.findById)
+  //.delete(userController.remove);
+
+// Matches with "/api/users/:id"
 router
   .route("/:id/update")
   .get(userController.findById)
