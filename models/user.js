@@ -97,6 +97,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb){
   });
 };
 
+//url: http://devsmash.com/blog/implementing-max-login-attempts-with-mongoose
 // userSchema.methods.incLoginAttempts=function(cb){
 //   if(this.lockUntil && this.lockUntil < Date.now()){
 //     return this.update({
