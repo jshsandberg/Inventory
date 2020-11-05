@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
+import Admin from "./pages/Admin";
+import Contact from "./pages/Contact.js";
 
 function App() {
   return (
@@ -12,7 +14,7 @@ function App() {
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/signin" component={SignIn} />
-      <Route exact path="/home" component={Home} />
+      <Route exact path="/admin " component={Admin} />
     </Router>
   )
 }
