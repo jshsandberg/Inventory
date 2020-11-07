@@ -8,7 +8,6 @@ const Schema = mongoose.Schema;
 //     SALT_WORK_FACTOR=10;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-
 const userSchema = new Schema({
   name: {
     //This is the first and last name of the User
@@ -16,48 +15,46 @@ const userSchema = new Schema({
     required: true
   },
   email: {
-      //This is the user's email
+    //This is the user's email
     type: String,
-    default: ""
+    default: "",
+    required: true
   },
-  phone:{
-      //user's phone number
-      type: Number,
-      default:0000000000
+  phone: {
+    //user's phone number
+    type: Number,
+    default:0000000000
   },
-  business:{
-      //business name
-      type:String,
-      default:""
+  business: {
+    //business name
+    type:String,
+    default:"",
+    required: true
   },
-  industry:{
+  industry: {
       //User's business of industry
     type:String,
     enum:['Advertising', 'Education', 'Electronics', 'Fashion', 'Food', 'Printing', 'Publishing', 'Other'],
     trim: true,
     required: true
   },
-  username:{
+  username: {
     type:String,
     required:true,
     index:{unique:true}
   },
-  password:{
+  password: {
     type:String,
     required:true
-  }
-  // loginAttempts:{
+  },
+  // loginAttempts: {
   //   type:Number,
-  //   required:true,
-  //   default:3
+  //   default:0
   // },
-  // lockUntil:{
+  // lockUntil: {
   //   type:Number
   // }
-
 });
-
-
 
 // userSchema.virtual('isLocked').get(function(){
 //   return !!(this.lockUntil && this.lockUntil > Date.now());
