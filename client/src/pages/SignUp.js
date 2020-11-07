@@ -9,6 +9,7 @@ function SignInPage() {
     <WelcomeNavBar />
     <SignUp />
     <Footer />
+    </>
   );
 }
 
