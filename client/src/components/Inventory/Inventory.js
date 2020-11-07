@@ -11,32 +11,80 @@ function Inventory() {
                 {
                     item: "beans",
                     dateAdded: "09/20/2020",
-                    quantity: "2 pounds"
+                    quantity: 2,
+                    cycle: [
+                        {
+                            amount: 5
+                        },
+                        {
+                            every: 30
+                        }
+                    ]
                 },
                 {
                     item: "milk",
                     dateAdded: "10/15/2020",
-                    quantity: "4 gallons"
+                    quantity: 5,
+                    cycle: [
+                        {
+                            amount: 5
+                        },
+                        {
+                            every: 30
+                        }
+                    ]
                 },   
                 {
                     item: "eggs",
                     dateAdded: "10/05/2020",
-                    quantity: "7 dozen"
+                    quantity: 12,
+                    cycle: [
+                        {
+                            amount: 5
+                        },
+                        {
+                            every: 30
+                        }
+                    ]
                 },  
                 {
                     item: "cups",
                     dateAdded: "08/20/2020",
-                    quantity: "300"
+                    quantity: 25,
+                    cycle: [
+                        {
+                            amount: 5
+                        },
+                        {
+                            every: 30
+                        }
+                    ]
                 },   
                 {
                     item: "forks",
                     dateAdded: "10/20/2020",
-                    quantity: "251"
+                    quantity: 85,
+                    cycle: [
+                        {
+                            amount: 5
+                        },
+                        {
+                            every: 30
+                        }
+                    ]
                 }, 
                 {
                     item: "spoons",
                     dateAdded: "09/09/2020",
-                    quantity: "63"
+                    quantity: 9,
+                    cycle: [
+                        {
+                            amount: 5
+                        },
+                        {
+                            every: 30
+                        }
+                    ]
                 },
             ]
         }
