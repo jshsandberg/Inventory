@@ -4,6 +4,7 @@ import WelcomeHero from "../components/WelcomeHero";
 import WelcomeIntro from "../components/WelcomeIntro";
 import WelcomeTitle from "../components/WelcomeTitle";
 import WelcomeFeatures from "../components/WelcomeFeatures";
+import Footer from "../components/Footer";
 
 function WelcomePage() {
   return(
@@ -13,6 +14,7 @@ function WelcomePage() {
         <WelcomeIntro />
         <WelcomeTitle />
         <WelcomeFeatures />
+        <Footer />
     </>
   );
 }

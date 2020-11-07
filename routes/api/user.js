@@ -3,6 +3,9 @@ const userController = require("../../controllers/userController");
 //const User = require("./models/User");
 //const Inventory = require("./models/Inventory");
 
+router.route("/")
+.get(userController.findAll)
+.post(userController.create);
 
 // Matches with "/api/users"
 router.route("/siginin")
@@ -11,7 +14,7 @@ router.route("/siginin")
 
 // Matches with "/api/users/:id"
 router
-  .route("/:id/login")
+  .route("/:id")
   .get(userController.findById)
   //.delete(userController.remove);
 
