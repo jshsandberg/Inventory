@@ -7,9 +7,8 @@
   "scripts": {
     "start": "if-env NODE_ENV=production && npm yarn start:prod || yarn run start:dev",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"yarn run client\"",
-    "client": "cd packages/app && yarn start",
-    "server": "cd packages/server && yarn start",
+    "start:dev": "concurrently \"nodemon server.js\" \"yarn run client\"",
+    "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "seed": "node scripts/seedDB.js",
     "install": "cd client && yarn install",
