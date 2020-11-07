@@ -8,10 +8,27 @@ function InventoryItems(props) {
   const [newName, setNewName] = useState();
   const [newDate, setNewDate] = useState();
   const [newSize, setNewSize] = useState();
-  const [modal, setModal] = useState();
+  const [newPush, setNewPush] = useState({});
   const [inventoryState, setInventoryState] = useState({...props});
 
 //console.log(props)
+
+
+
+Date.prototype.addDays = function(days) {
+  let date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+
+  
+  }
+  let date = new Date();
+
+  
+  console.log(date.addDays(5).getMonth())
+  console.log(date.addDays(5).getDate())
+
+
 
 
   const handleInputChange = event => {
@@ -20,35 +37,33 @@ function InventoryItems(props) {
   }
 
   const updateInventory = () => {
-    setNewItem({
+    const newItem = ({
       item: newName,
       dateAdded: newDate,
       quantity: newSize,
     })
 
-    console.log(newItem)
     
-
+    inventoryState.inventory.push(newItem)
     console.log(inventoryState)
+    
+    
 
   }
     
-    //console.log(props.Inventory.inventory[0].quantity)
+
 
     
 
     useEffect(() => {
-      inventoryState.inventory.push(newItem)
-    },[newItem]); 
+     
+    },[inventoryState]); 
 
    
-    const alterInventory = (item) => {
-     //console.log(item)
-     setModal(item)
-    }
 
     return (
         <div className="container">
+          <h1>Stock Inventory</h1>
    <table className="table table-striped">
   <thead>
     <tr>
@@ -56,6 +71,8 @@ function InventoryItems(props) {
       <th scope="col">Item Name</th>
       <th scope="col">Date Added</th>
       <th scope="col">Quantity</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -65,16 +82,24 @@ function InventoryItems(props) {
                         <th scope="row"></th>
                             <td>{item.item}</td>
                             <td>{item.dateAdded}</td>
-                            <td>{item.quantity}</td>
-                            <button 
+                            {item.quantity < 5 ? <td style={{backgroundColor: "red"}}>{item.quantity}</td> : <td>{item.quantity}</td>}
+                            <td><button 
                             //value={item} 
                             type="button" 
                             className="btn btn-primary" 
                             data-toggle="modal" 
                             data-target="#exampleModal" 
-                            onClick={(e) => {alterInventory(item)}}>
-                              Alter
-                            </button>
+                         
+                            >
+                              Update
+                            </button></td>
+                            <td><button
+                            type="button"
+                            className="btn btn-primary"
+                            style={{backgroundColor:"red"}}
+                            >
+                              Delete
+                            </button></td>
                             <div 
                             className="modal fade" 
                             id="exampleModal" 
@@ -130,6 +155,48 @@ function InventoryItems(props) {
       })}
   </tbody>
 </table>
+
+<div>
+  <div className="container">
+      <h1>Shipment Dates</h1>
+      <div className="row">
+  <div className="col-4">
+    <div className="list-group" id="list-tab" role="tablist">
+      {inventoryState.inventory.map(info => {
+        return (
+        <a className="list-group-item list-group-item-action" id={`list-${info.item}-list`} data-toggle="list" href={`#list-${info.item}`} role="tab" aria-controls={info.item}>{info.item}</a>
+        )
+      })}
+      {/* <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
+      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a> */}
+    </div>
+  </div>
+  <div className="col-8">
+  <div className="tab-content" id="nav-tabContent">
+    {inventoryState.inventory.map(shipment => {
+      return (
+      <div className="tab-pane fade show" id={`list-${shipment.item}`} role="tabpanel" aria-labelledby={`list-${shipment.item}-list`}>
+        <p>Last Bought: {shipment.dateAdded}</p>
+        <p>Day Inventory will be Arriving: 
+          {
+        
+          }
+          </p>
+        </div>
+      )
+    })}
+   
+      {/* <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">hello</div>
+      <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+      <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+      <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div> */}
+    </div>
+  </div>
+</div>
+  </div>
+</div>
 
 
         
