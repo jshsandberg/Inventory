@@ -4,10 +4,9 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-    // bcrypt = require('bcrypt'),
-    // SALT_WORK_FACTOR=10;
-// const passportLocalMongoose = require('passport-local-mongoose');
-
+//     bcrypt = require('bcrypt'),
+//     SALT_WORK_FACTOR=10;
+const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
   name: {
@@ -163,7 +162,11 @@ const userSchema = new Schema({
 //   MAX_ATTEMPTS: 5
 // }
 
-//userSchema.plugin(passportLocalMongoose);
+userSchema.methods.authenticate = function(password) {      
+  return this.password === password;
+}
+
+userSchema.plugin(passportLocalMongoose);
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;

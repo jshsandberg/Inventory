@@ -20,16 +20,16 @@ function WelcomeNavBar(props) {
             <div className="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                 <ul className="navbar-nav ml-auto flex-nowrap">
                     <li className="nav-item active">
-                        <a href="#" className="nav-link active">Home</a>
+                        <a href="/" className="nav-link ">Home</a>
                     </li>
                     <li className="nav-item">
                         <a href="#" className="nav-link">Contact</a>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Sign Up</a>
+                        <a href="/signup" className="nav-link">Sign Up</a>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Login</a>
+                        <a href="signin" className="nav-link">Login</a>
                     </li>
                 </ul>
             </div>

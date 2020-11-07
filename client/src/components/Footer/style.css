@@ -1,0 +1,18 @@
+#footer-container {
+    background: #343a40;
+}
+#footer {
+    color: white;
+    padding: 25px 0;
+    max-width: 1400px;
+    margin: auto;
+}
+#footer .github{
+    width: 32px;
+}
+#footer #footer-team {
+    text-align: right;
+}
+#footer-logo {
+    text-align: center;
+}
