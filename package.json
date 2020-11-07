@@ -10,7 +10,6 @@
     "start:dev": "concurrently \"nodemon server.js\" \"yarn run client\"",
     "client": "cd client && yarn start",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "seed": "node scripts/seedDB.js",
     "install": "cd client && yarn install",
     "build": "cd client && yarn run build",
     "heroku-postbuild": "yarn run build"
