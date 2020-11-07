@@ -1,31 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
+import API from '../../utils/API';
 
-function SignUp () {
+function SignUp() {
+
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    API.saveuser({
+      name: formObject.firstName + " " + formObject.lastName,
+      email: formObject.email,
+      phone: formObject.phone,
+      business: formObject.business,
+      shipping: formObject.shipping,
+      username: formObject.username,
+      password: formObject.password,
+      industry: formObject.industry
+    })
+      .then(res => res.json(res))
+      .catch(err => console.log(err));
+  };
+
+
   return (
     <form>
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputFirstName">First Name</label>
-          <input type="text" class="form-control" id="inputFirstName" placeholder="First Name" />
+          <input type="text" class="form-control" name="firstName" onChange={handleInputChange} id="inputFirstName" placeholder="First Name" />
         </div>
         <div class="form-group col-md-6">
           <label for="inputLastName">Last Name</label>
-          <input type="text" class="form-control" id="inputLastName" placeholder="Lat Name" />
+          <input type="text" class="form-control" name="lastName" onChange={handleInputChange} placeholder="Last Name" />
         </div>
       </div>
-      <div class="form-group">
-        <label for="inputEmail">Email</label>
-        <input type="text" class="form-control" id="inputEmail" placeholder="email" />
-      </div>
       <div class="form-row">
-        <div class="form-group col-md-8">
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Email</label>
+          <input type="text" class="form-control" name="email" onChange={handleInputChange} placeholder="email" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Phone</label>
+          <input type="text" class="form-control" name="phone" onChange={handleInputChange} placeholder="phone" />
+        </div>
+
+        <div class="form-group col-md-6">
           <label for="inputBusinessName">Buisness Name</label>
-          <input type="text" class="form-control" id="inputBusinessName" placeholder="Business" />
+          <input type="text" class="form-control" name="business" onChange={handleInputChange} placeholder="Business" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputBusinessName">Shipping Address</label>
+          <input type="text" class="form-control" name="shipping" onChange={handleInputChange} placeholder="Shipping" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputBusinessName">Username</label>
+          <input type="text" class="form-control" name="username" onChange={handleInputChange} placeholder="Username" />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputBusinessName">Password</label>
+          <input type="password" class="form-control" name="password" onChange={handleInputChange} placeholder="Password" />
         </div>
         <div class="form-group col-md-4">
           <label for="inputState">Industry</label>
-          <select id="inputState" class="form-control">
+          <select name="industry" onChange={handleInputChange} class="form-control">
             <option selected>Choose...</option>
             <option data-value="advertising">Advertising</option>
             <option data-value="education">Education</option>
@@ -46,7 +82,7 @@ function SignUp () {
           </label>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Sign in</button>
+      <a href="/signin"><button type="submit" class="btn btn-primary">Sign Up</button></a>
     </form>
   )
 }
