@@ -12,6 +12,7 @@ function App() {
   return (
 
 
+
     <Router>
       <Route exact path="/" component={Welcome} />
       <Route exact path="/contact" component={Contact} />
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/admin " component={Admin} />
     </Router>
+
   )
 }
 

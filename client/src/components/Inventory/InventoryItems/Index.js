@@ -13,6 +13,30 @@ function InventoryItems(props) {
 
 //console.log(props)
 
+const findDate = (days) => {
+
+Date.prototype.addDays = function(days) {
+  let date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+
+  
+  }
+  let date = new Date();
+  let readableDate = date.addDays(days)
+
+
+  //console.log(readableDate)
+
+  return <p>{`${readableDate.getMonth() + 1}/
+  ${readableDate.getDate()}
+  /20${readableDate.getYear() - 100} `}</p>
+  
+ 
+}
+
+findDate()
+
 
 
 Date.prototype.addDays = function(days) {
@@ -167,24 +191,23 @@ Date.prototype.addDays = function(days) {
         <a className="list-group-item list-group-item-action" id={`list-${info.item}-list`} data-toggle="list" href={`#list-${info.item}`} role="tab" aria-controls={info.item}>{info.item}</a>
         )
       })}
-      {/* <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-      <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-      <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-      <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a> */}
+
     </div>
   </div>
   <div className="col-8">
   <div className="tab-content" id="nav-tabContent">
     {inventoryState.inventory.map(shipment => {
+
+      console.log(shipment.cycle[1].every)
       return (
       <div className="tab-pane fade show" id={`list-${shipment.item}`} role="tabpanel" aria-labelledby={`list-${shipment.item}-list`}>
         <p>Last Bought: {shipment.dateAdded}</p>
-        <p>Day Inventory will be Arriving: 
-          {
-        
-          }
-          </p>
-        </div>
+        <p>Day Inventory will be Arriving: {findDate(shipment.cycle[1].every)}</p>
+        <p>Cost Value: </p>
+        <p>Sale Value: </p>
+        <p>Net Gain: </p>
+      </div>
+
       )
     })}
    
