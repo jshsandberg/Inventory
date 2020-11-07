@@ -4,6 +4,13 @@ import API from '../../utils/API';
 
 function SignUp() {
 
+  const [formObject, setFormObject] = useState({})
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    setFormObject({ ...formObject, [name]: value })
+  };
+
   function handleFormSubmit(event) {
     event.preventDefault();
     API.saveuser({
@@ -82,7 +89,7 @@ function SignUp() {
           </label>
         </div>
       </div>
-      <a href="/signin"><button type="submit" class="btn btn-primary">Sign Up</button></a>
+      <a href="/signin"><button type="submit" onClick={handleFormSubmit} class="btn btn-primary">Sign Up</button></a>
     </form>
   )
 }
