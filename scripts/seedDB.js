@@ -8,7 +8,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 mongoose.connect(
   process.env.MONGODB_URI ||
-  "mongodb://localhost/reactinventory"
+  "mongodb://localhost/reactuserinventory"
   
 );
 

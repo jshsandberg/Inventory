@@ -38,6 +38,23 @@ Date.prototype.addDays = function(days) {
 findDate()
 
 
+
+Date.prototype.addDays = function(days) {
+  let date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+
+  
+  }
+  let date = new Date();
+
+  
+  console.log(date.addDays(5).getMonth())
+  console.log(date.addDays(5).getDate())
+
+
+
+
   const handleInputChange = event => {
     console.log(event.target.value)
     //setInput(event.target.value)
@@ -174,11 +191,13 @@ findDate()
         <a className="list-group-item list-group-item-action" id={`list-${info.item}-list`} data-toggle="list" href={`#list-${info.item}`} role="tab" aria-controls={info.item}>{info.item}</a>
         )
       })}
+
     </div>
   </div>
   <div className="col-8">
   <div className="tab-content" id="nav-tabContent">
     {inventoryState.inventory.map(shipment => {
+
       console.log(shipment.cycle[1].every)
       return (
       <div className="tab-pane fade show" id={`list-${shipment.item}`} role="tabpanel" aria-labelledby={`list-${shipment.item}-list`}>
@@ -188,6 +207,7 @@ findDate()
         <p>Sale Value: </p>
         <p>Net Gain: </p>
       </div>
+
       )
     })}
    
