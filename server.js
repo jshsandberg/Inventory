@@ -1,15 +1,12 @@
 const express = require("express");
+const User = require('./models/user');
 const passport = require("passport");
 const path =require("path");
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const routeapi=require("./routes/api");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const User = require('./models/User');
-//const db = require("./models");
-//const db = require('./config/production').mongoURI;
 
 //static authenticate method of model in local strategy
 passport.use(new LocalStrategy(User.authenticate()));
@@ -33,8 +30,6 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 app.use(express.json());
 // Connect to the Mongo DB
-//mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactuserinventory");
-
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactuserinventory", {
   useNewUrlParser: true,
   useFindAndModify: false,

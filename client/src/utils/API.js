@@ -2,6 +2,7 @@ import axios from "axios";
 import {inventory} from "./mockData";
 
 export default {
+  
   // Gets the book with the given id
   getuser: function(id) {
     return axios.get("/api/user/" + id);
