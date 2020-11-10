@@ -7,6 +7,7 @@ function SignUp() {
   const [formObject, setFormObject] = useState({})
 
   function handleInputChange(event) {
+    event.preventDefault();
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value })
   };
@@ -22,13 +23,8 @@ function SignUp() {
       username: formObject.username,
       password: formObject.password,
       industry: formObject.industry
-    },
-    console.log("Hello"+ formObject.password)
-    ) 
-      .then(res =>{
-        res.json(res);
-        console.log("Successful"+ res);
-      } )
+    })
+      .then(res => console.log(res.config.data))
       .catch(err => console.log(err));
   };
 
