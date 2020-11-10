@@ -1,11 +1,10 @@
 import React from "react";
 import "./style.css";
 
-// The ...props means, spread all of the passed props onto this element
-// That way we don't have to define them all individually
-function WelcomeNavBar(props) {
-    return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+function NavBar(props) {
+  console.log("I see NavBar");
+  return (
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
                 <a className="navbar-brand" href="#">
@@ -25,15 +24,12 @@ function WelcomeNavBar(props) {
                     <li className="nav-item">
                         <a href="#" className="nav-link">Contact</a>
                     </li>
-                    <li className="nav-item">
-                        <a href="/signup" className="nav-link">Sign Up</a>
-                    </li>
                 </ul>
-                <a href="/signin" className="nav-link"><button type="button" className="btn btn-light">Login <i className="fa fa-user" aria-hidden="true"></i>
+                <a href="/signin" className="nav-link"><button type="button" className="btn btn-light">Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
 </button></a>
             </div>
         </nav>
-    );
+  );
 }
 
-export default WelcomeNavBar;
+export default NavBar;

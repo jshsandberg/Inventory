@@ -6,7 +6,7 @@ import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact.js";
-import Inventory from "./components/Inventory/Inventory"
+import Inventory from "./pages/Inventory";
 
 function App() {
   return (

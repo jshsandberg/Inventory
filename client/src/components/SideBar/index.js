@@ -4,7 +4,7 @@ import HomePageLogo from "./../../assets/homepagelogo.png";
 import InventoryLogo from "./../../assets/inventorylogo.jpg";
 import LogoutLogo from "./../../assets/logoutlogo.jpg";
 import InventoryDealsLogo from "./../../assets/logo.jpeg";
-function HrNav() {
+function SideBar(props) {
 
   return (
 
@@ -29,4 +29,4 @@ function HrNav() {
   );
 }
 
-export default HrNav;
+export default SideBar;
