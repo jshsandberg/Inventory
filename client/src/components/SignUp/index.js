@@ -22,8 +22,13 @@ function SignUp() {
       username: formObject.username,
       password: formObject.password,
       industry: formObject.industry
-    })
-      .then(res => res.json(res))
+    },
+    console.log("Hello"+ formObject.password)
+    ) 
+      .then(res =>{
+        res.json(res);
+        console.log("Successful"+ res);
+      } )
       .catch(err => console.log(err));
   };
 

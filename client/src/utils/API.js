@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default {
+  
   // Gets the book with the given id
   getuser: function(id) {
     return axios.get("/api/user/" + id);
@@ -11,6 +12,6 @@ export default {
   },
   // Saves a user to the database
   saveuser: function(userData) {
-    return axios.post("/api/user", userData);
+    return axios.post("/api/user/", {userData});
   }
 };
