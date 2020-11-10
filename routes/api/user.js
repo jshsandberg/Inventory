@@ -3,12 +3,8 @@ const userController = require("../../controllers/userController");
 //const User = require("./models/User");
 //const Inventory = require("./models/Inventory");
 
-router.route("/")
-.get(userController.findAll)
-.post(userController.create);
-
 // Matches with "/api/users"
-router.route("/siginin")
+router.route("/signup")
   //.get(userController.findById)
   .post(userController.create);
 
