@@ -1,8 +1,3 @@
-.blurb {
-    background: #ffffff73;
-    padding: 10px;
-    box-shadow: 0px 0px 10px #cccccc;
-}
 #testimonial-container {
     background: #e0e0e0;
     padding: 50px 0;
@@ -15,4 +10,16 @@
 }
 #testimonials hr {
     width: 100%;
+}
+.blurb {
+    background: #ffffff73;
+    padding: 10px;
+    box-shadow: 0px 0px 10px #cccccc;
+    margin: 10px 0;
+}
+.blurb .author {
+    text-align: left;
+}
+.blurb .company {
+    text-align: left;
 }

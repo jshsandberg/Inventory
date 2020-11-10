@@ -1,3 +1,9 @@
-.container {
-    padding: 25px 0px;
+#intro-container {
+    background: #e0e0e0;
+    padding: 50px 0;
+    text-align: center;
+}
+#intro {
+    max-width: 1140px;
+    margin: auto;
 }
