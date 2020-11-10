@@ -1,4 +1,5 @@
 import axios from "axios";
+import {inventory} from "./mockData";
 
 export default {
   // Gets the book with the given id
@@ -12,5 +13,8 @@ export default {
   // Saves a user to the database
   saveuser: function(userData) {
     return axios.post("/api/user", userData);
+  },
+  getInventory: function(){
+    return new Promise((resolve,reject)=> resolve(inventory))
   }
 };
