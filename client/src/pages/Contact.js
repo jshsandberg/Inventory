@@ -10,7 +10,7 @@ function ContactPage() {
     <WelcomeNavBar/>
     <Footer />
 
-</>
+    </>
   );
 }
 
