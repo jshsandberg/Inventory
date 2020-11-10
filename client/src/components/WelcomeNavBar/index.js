@@ -28,10 +28,9 @@ function WelcomeNavBar(props) {
                     <li className="nav-item">
                         <a href="/signup" className="nav-link">Sign Up</a>
                     </li>
-                    <li className="nav-item">
-                        <a href="signin" className="nav-link">Login</a>
-                    </li>
                 </ul>
+                <a href="/signin" className="nav-link"><button type="button" className="btn btn-light">Login <i className="fa fa-user" aria-hidden="true"></i>
+</button></a>
             </div>
         </nav>
     );
