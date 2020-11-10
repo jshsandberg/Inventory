@@ -6,8 +6,10 @@ import WelcomeNavBar from "../components/WelcomeNavBar";
 function ContactPage() {
   return(
     <>
+
     <WelcomeNavBar/>
     <Footer />
+
 </>
   );
 }

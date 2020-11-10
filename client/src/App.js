@@ -12,13 +12,16 @@ function App() {
   return (
 
 
+
     <Router>
+      <Route exact path="/inventory" component={Inventory}/>
       <Route exact path="/" component={Welcome} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/admin " component={Admin} />
     </Router>
+
   )
 }
 

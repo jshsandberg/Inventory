@@ -19,7 +19,14 @@ function Inventory() {
                         {
                             every: 30
                         }
-                    ]
+                    ],
+                    sale:
+                        {
+                            unitPrice: 2.99,
+                            salePrice: 4.59,
+                            unitsSold: 10
+                        }
+                    
                 },
                 {
                     item: "milk",
@@ -32,7 +39,14 @@ function Inventory() {
                         {
                             every: 30
                         }
-                    ]
+                    ],
+                    sale:
+                    {
+                        unitPrice: 2.99,
+                        salePrice: 4.59,
+                        unitsSold: 10
+                    }
+                
                 },   
                 {
                     item: "eggs",
@@ -45,7 +59,14 @@ function Inventory() {
                         {
                             every: 30
                         }
-                    ]
+                    ],
+                    sale:
+                    {
+                        unitPrice: 2.99,
+                        salePrice: 4.59,
+                        unitsSold: 10
+                    }
+                
                 },  
                 {
                     item: "cups",
@@ -58,7 +79,14 @@ function Inventory() {
                         {
                             every: 30
                         }
-                    ]
+                    ],
+                    sale:
+                    {
+                        unitPrice: 2.99,
+                        salePrice: 4.59,
+                        unitsSold: 10
+                    }
+                
                 },   
                 {
                     item: "forks",
@@ -71,7 +99,14 @@ function Inventory() {
                         {
                             every: 30
                         }
-                    ]
+                    ],
+                    sale:
+                    {
+                        unitPrice: 2.99,
+                        salePrice: 4.59,
+                        unitsSold: 10
+                    }
+                
                 }, 
                 {
                     item: "spoons",
@@ -84,7 +119,14 @@ function Inventory() {
                         {
                             every: 30
                         }
-                    ]
+                    ],
+                    sale:
+                    {
+                        unitPrice: 2.99,
+                        salePrice: 4.59,
+                        unitsSold: 10
+                    }
+                
                 },
             ]
         }
