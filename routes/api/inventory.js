@@ -3,9 +3,9 @@ const inventController = require("../../controllers/inventoryController");
 // const User = require("../../models/User");
 // const Inventory = require("../../models/Inventory");
 // Matches with "/api/books"
-// router.route("/")
+router.route("/")
 //   .get(inventController.findAll)
-//   .post(inventController.create);
+   .post(inventController.create);
 
 // Matches with "/api/inventory/:id" and puts inventory in
 router
