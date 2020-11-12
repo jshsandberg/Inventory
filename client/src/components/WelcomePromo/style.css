@@ -11,3 +11,13 @@
     line-height: 36px;
     font-weight: 300;
 }
+#promo-button {
+    font-size: 16px;
+    padding: 0px 30px;
+    margin: auto;
+    max-height: 50px;
+}
+
+#promo-button:hover {
+    border: 2px solid white;
+}
