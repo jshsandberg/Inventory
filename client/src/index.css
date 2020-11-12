@@ -11,3 +11,79 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.container {
+  padding: 50px 0px;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+.navbar-brand {
+  color: #07b316;
+}
+nav {
+  border-bottom: 1px solid #9e9e9e;
+}
+button {
+  color: #07b316;
+  border: 2px solid #07b316;
+  border-radius: 100px;
+  background: #fff;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 26px;
+  max-height: 38px;
+  transition: 0.3s;
+}
+button:hover {
+  color: #fff;
+    background: #07b316;
+    border: 2px solid #07b316;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+}
+.inverted {
+  color: #fff;
+  border: 2px solid #07b316;
+  border-radius: 100px;
+  background: #07b316;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 26px;
+  max-height: 38px;
+  transition: 0.3s;
+}
+
+.inverted:hover {
+  color: #07b316;
+  background: #fff;
+  border: 2px solid #07b316;
+  background-image: none;
+  box-shadow: none;
+  text-shadow: none;
+
+}
+.col-md-4 .fa {
+  color: #10b116;
+}
+.nav-link:hover, .nav-link:active {
+  color: #10b116;
+}
