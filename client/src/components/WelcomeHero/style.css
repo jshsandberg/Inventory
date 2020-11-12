@@ -46,3 +46,8 @@ header {
       display: none;
     }
   }
+  #video-btn {
+    font-size: 18px;
+    max-height: 60px;
+    margin: 15px 0px;
+  }
