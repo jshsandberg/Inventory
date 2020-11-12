@@ -1,0 +1,13 @@
+#promo-container {
+    background: #10b116;
+    padding: 50px 0;
+    text-align: center;
+}
+#promo {
+    max-width: 1140px;
+    margin: auto;
+    color: white;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 300;
+}
