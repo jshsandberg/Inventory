@@ -11,3 +11,7 @@
     line-height: 36px;
     font-weight: 300;
 }
+#intro p {
+    padding-left: 15px;
+    padding-right: 15px;
+}

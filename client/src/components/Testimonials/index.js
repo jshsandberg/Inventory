@@ -11,13 +11,13 @@ function Testimonials(props) {
                 <div className="col-md-6">
                     <div className="blurb">
                         <i className="fa fa-quote-left"></i>
-                        <q>This software has truly revolutionized the way we run our business!</q>
+                        <q>This program allows me to save big on my taxes! Plus it allows me to track inventory in our many warehouses.</q>
                         <h5 className="author">Jeff Bezos, CEO</h5>
                         <h6 className="company">Amazon</h6>
                     </div>
                     <div className="blurb">
                         <i className="fa fa-quote-left"></i>
-                        <q>As a mom and pop coffee shop, keeping track of spoons and coffee beans is way eaiser! It saves us time which saves us money.</q>
+                        <q>For years I've been buying way to many spoons. This program has helped me buy the correct amount of spoons. It works great with forks and knives too!</q>
                         <h5 className="author">Ben Peters, Owner</h5>
                         <h6 className="company">Hive Coffee</h6>
                     </div>
@@ -25,15 +25,15 @@ function Testimonials(props) {
                 <div className="col-md-6">
                     <div className="blurb">
                         <i className="fa fa-quote-left"></i>
-                        <q>As a mom and pop coffee shop, keeping track of spoons and coffee beans is way eaiser! It saves us time which saves us money.</q>
-                        <h5 className="author">Ben Peters, Owner</h5>
-                        <h6 className="company">Hive Coffee</h6>
+                        <q>We are a bakery and we got the dough! Lots of it! But we can't keep track of it all. With this app we got a better grip on our dough.</q>
+                        <h5 className="author">Sarah Kimmel, Owner</h5>
+                        <h6 className="company">Sarah's Sweets</h6>
                     </div>
                     <div className="blurb">
                         <i className="fa fa-quote-left"></i>
-                        <q>As a mom and pop coffee shop, keeping track of spoons and coffee beans is way eaiser! It saves us time which saves us money.</q>
-                        <h5 className="author">Ben Peters, Owner</h5>
-                        <h6 className="company">Hive Coffee</h6>
+                        <q>I run a furniture store and we can finally keep track of our couches. Plus I can sit on the couch and manage my inventory with my tablet!</q>
+                        <h5 className="author">Ken Tulsa, President</h5>
+                        <h6 className="company">Tusla Furniture Outlet</h6>
                     </div>
                 </div>
             </div>

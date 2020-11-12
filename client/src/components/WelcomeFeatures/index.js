@@ -5,7 +5,7 @@ import "./style.css";
 // That way we don't have to define them all individually
 function WelcomeFeatures(props) {
     return (
-        <div className="container" id="features-containter">
+        <div className="container" id="features-container">
             <div className="row">
                 <div className="col-12">
                     <h1 className="title">Why Inventory Tracker</h1>
@@ -22,8 +22,8 @@ function WelcomeFeatures(props) {
                 </div>
                 </div>
                 </div>
-                <div className="col-md-4" id="">
-                <div className="card">
+                <div className="col-md-4">
+                <div className="card" id="secure">
                 <div className="card-body">
                     <i className="fa fa-shield" aria-hidden="true"></i>
                     <h2>Secure</h2>

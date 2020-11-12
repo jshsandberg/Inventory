@@ -1,6 +1,7 @@
 #footer-container {
     background: #343a40;
     position:relative;
+    padding: 25px 0;
     bottom:0;
 }
 #footer {
