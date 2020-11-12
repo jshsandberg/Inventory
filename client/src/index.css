@@ -11,8 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.container {
-  padding: 50px 0px;
+.container, .container-fluid {
+  padding: 100px 0px;
 }
 
 hr {
