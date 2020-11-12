@@ -4,6 +4,7 @@ import HomePageLogo from "./../../assets/homepagelogo.png";
 import InventoryLogo from "./../../assets/inventorylogo.jpg";
 import LogoutLogo from "./../../assets/logoutlogo.jpg";
 import InventoryDealsLogo from "./../../assets/logo.jpeg";
+import { Link } from "react-router-dom";
 function SideBar(props) {
 
   return (
@@ -12,16 +13,16 @@ function SideBar(props) {
     <div className="sidenav">
       <ul>
         <li>
-          <img src={InventoryDealsLogo} id="logo"></img>
+          <img src={InventoryDealsLogo} id="logo" alt="logo"></img>
         </li>
         <li>
-          <a href="/" id="dashboard"><img src={HomePageLogo} className="logo"></img>Dashboard</a>
+          <Link to="/" id="dashboard"><img src={HomePageLogo} className="logo"></img>Dashboard</Link>
         </li>
         <li>
-          <a href="/portfolio"><img src={InventoryLogo} className="logo"></img>Inventory</a>
+          <Link to="/portfolio"><img src={InventoryLogo} className="logo"></img>Inventory</Link>
         </li>
         <li>
-          <a href="/contact" id="logout"><img src={LogoutLogo} className="logo"></img>Logout</a>
+          <Link to="/contact" id="logout"><img src={LogoutLogo} className="logo"></img>Logout</Link>
         </li>
       </ul>
     </div>

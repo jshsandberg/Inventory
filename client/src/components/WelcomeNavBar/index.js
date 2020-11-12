@@ -9,12 +9,12 @@ function WelcomeNavBar(props) {
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
-                <a className="navbar-brand" href="/">
+                <Link className="navbar-brand" to="/">
                     Inventory
-                </a>
+                </Link>
                 <div className="w-100 text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
                 </div>
             </div>
