@@ -21,7 +21,6 @@ function SignUp() {
       email: formObject.email,
       phone: formObject.phone,
       business: formObject.business,
-      shipping: formObject.shipping,
       username: formObject.username,
       password: formObject.password,
       industry: formObject.industry
@@ -30,7 +29,6 @@ function SignUp() {
       .catch(err => console.log(err));
   };
 
-
   return (
     <div className="container-fluid" id="background">
       <div className="row">
@@ -38,33 +36,63 @@ function SignUp() {
           <form className="form-signup">
           <h2 align="center">Signup Today</h2>
           <p>Welcome! We're happy that you've decided to start you journey to inventory bliss with us. Fill out the form below to get started.</p>
-
             <div className="form-row">
             <div className="col-md-12 divider">
                 <h4 align="center">General Information</h4>
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputFirstName">First Name</label> */}
-                <input type="text" className="form-control" name="firstName" onChange={handleInputChange} id="inputFirstName" placeholder="First Name" />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="firstName" 
+                  onChange={handleInputChange} 
+                  id="inputFirstName" 
+                  placeholder="First Name" 
+                />
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputLastName">Last Name</label> */}
-                <input type="text" className="form-control" name="lastName" onChange={handleInputChange} placeholder="Last Name" />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="lastName" 
+                  onChange={handleInputChange} 
+                  placeholder="Last Name" 
+                />
               </div>
             </div>
             <div className="form-row">
               <div className="form-group col-md-6">
                 {/* <label for="inputEmail">Email</label> */}
-                <input type="text" className="form-control" name="email" onChange={handleInputChange} placeholder="Email Address" />
+
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="email" 
+                  onChange={handleInputChange} 
+                  placeholder="Email Address" 
+                />
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputEmail">Phone</label> */}
-                <input type="text" className="form-control" name="phone" onChange={handleInputChange} placeholder="Phone #" />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="phone" 
+                  onChange={handleInputChange} 
+                  placeholder="Phone #" 
+                />
               </div>
-
               <div className="form-group col-md-6">
                 {/* <label for="inputBusinessName">Buisness Name</label> */}
-                <input type="text" className="form-control" name="business" onChange={handleInputChange} placeholder="Business Name" />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="business" 
+                  onChange={handleInputChange} 
+                  placeholder="Business Name" 
+                />
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputState">Industry</label> */}
@@ -80,20 +108,28 @@ function SignUp() {
                   <option data-value="other">Other</option>
                 </select>
               </div>
-              {/* <div className="form-group col-md-6">
-                <label for="inputBusinessName">Shipping Address</label>
-                <input type="text" className="form-control" name="shipping" onChange={handleInputChange} placeholder="Shipping" />
-              </div> */}
               <div className="col-md-12 divider">
               <h4 align="center">Create Your Account Credentials</h4>
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputBusinessName">Username</label> */}
-                <input type="text" className="form-control" name="username" onChange={handleInputChange} placeholder="Username" />
+                <input 
+                  type="text" 
+                  className="form-control" 
+                  name="username" 
+                  onChange={handleInputChange} 
+                  placeholder="Username" 
+                />
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputBusinessName">Password</label> */}
-                <input type="password" className="form-control" name="password" onChange={handleInputChange} placeholder="Password" />
+                <input 
+                  type="password" 
+                  className="form-control" 
+                  name="password" 
+                  onChange={handleInputChange} 
+                  placeholder="Password" 
+                />
               </div>
             </div>
             <div className="form-group">
