@@ -1,14 +1,15 @@
 import React from "react";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
 function WelcomeNavBar(props) {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav className="navbar navbar-expand-lg bg-light">
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
-                <a className="navbar-brand" href="#">
+                <a className="navbar-brand" href="/">
                     Inventory
                 </a>
                 <div className="w-100 text-right">
@@ -20,17 +21,17 @@ function WelcomeNavBar(props) {
             <div className="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
                 <ul className="navbar-nav ml-auto flex-nowrap">
                     <li className="nav-item active">
-                        <a href="/" className="nav-link ">Home</a>
+                        <Link to="/" className="nav-link ">Home</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Contact</a>
+                    <Link to="/" className="nav-link">Contact</Link>
                     </li>
                     <li className="nav-item">
-                        <a href="/signup" className="nav-link">Sign Up</a>
+                    <Link to="/signup" className="nav-link">Sign Up</Link>
                     </li>
                 </ul>
-                <a href="/signin" className="nav-link"><button type="button" className="btn btn-light">Login <i className="fa fa-user" aria-hidden="true"></i>
-</button></a>
+                <Link to="/signin" className="nav-link"><button type="button" id="get-started-button">Login <i className="fa fa-user" aria-hidden="true"></i>
+</button></Link>
             </div>
         </nav>
     );
