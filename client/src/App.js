@@ -11,8 +11,6 @@ import Inventory from "./pages/Inventory";
 function App() {
   return (
 
-
-
     <Router>
       <Route exact path="/inventory" component={Inventory}/>
       <Route exact path="/" component={Welcome} />
