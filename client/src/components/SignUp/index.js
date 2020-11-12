@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./style.css";
 import API from '../../utils/API';
 
+import background from "../../assets/pexels-tiger-lily-4481323.jpg"
+
 function SignUp() {
 
   const [formObject, setFormObject] = useState({})
@@ -30,7 +32,7 @@ function SignUp() {
 
 
   return (
-    <div className="container">
+    <div className="container-fluid" id="background">
       <div className="row">
         <div className="col-12">
           <form className="form-signup">
@@ -102,7 +104,7 @@ function SignUp() {
                 </label>
               </div>
             </div>
-            <a href="/signin"><button type="submit" onClick={handleFormSubmit} class="btn btn-primary btn-lg btn-block">Sign Up</button></a>
+            <a href="/signin"><button type="submit" onClick={handleFormSubmit} class="inverted" id="signup-login-btn">Sign Up</button></a>
           </form>
         </div>
       </div>
