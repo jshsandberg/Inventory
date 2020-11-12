@@ -9,7 +9,7 @@ function WelcomePromo(props) {
                     <h2>Excited to get started? We thought so!</h2>
                 </div>
                 <div className="col-md-4 col-sm-12">
-                    <button>Sign Up</button>
+                    <button id="promo-button">Sign Up</button>
                 </div>
             </div>
         </div>
