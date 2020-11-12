@@ -1,9 +1,13 @@
 #intro-container {
-    background: #e0e0e0;
+    background: #10b116;
     padding: 50px 0;
     text-align: center;
 }
 #intro {
     max-width: 1140px;
     margin: auto;
+    color: white;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 300;
 }

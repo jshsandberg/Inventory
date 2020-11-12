@@ -1,0 +1,24 @@
+nav #get-started-button {
+    color: #07b316;
+    border: 2px solid #07b316;
+    border-radius: 100px;
+    background: #fff;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 26px;
+    max-height: 38px;
+    transition: 0.3s;
+  }
+  nav #get-started-button:hover {
+    color: #fff;
+      background: #07b316;
+      border: 2px solid #07b316;
+      background-image: none;
+      box-shadow: none;
+      text-shadow: none;
+  }
