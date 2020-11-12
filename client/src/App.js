@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact.js";
 import Inventory from "./pages/Inventory";
+import InventoryFill from "./pages/InventoryFill"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route exact path="/signup" component={SignUp} />
       <Route exact path="/signin" component={SignIn} />
       <Route exact path="/admin " component={Admin} />
+      <Route exact path="/inventoryfill" component={InventoryFill} />
     </Router>
 
   )
