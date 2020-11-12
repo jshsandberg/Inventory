@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./style.css";
 import API from '../../utils/API';
 
+import background from "../../assets/pexels-tiger-lily-4481323.jpg"
+
 function SignUp() {
 
   const [formObject, setFormObject] = useState({})
@@ -28,7 +30,7 @@ function SignUp() {
   };
 
   return (
-    <div className="container">
+    <div className="container-fluid" id="background">
       <div className="row">
         <div className="col-12">
           <form className="form-signup">
@@ -63,6 +65,7 @@ function SignUp() {
             <div className="form-row">
               <div className="form-group col-md-6">
                 {/* <label for="inputEmail">Email</label> */}
+
                 <input 
                   type="text" 
                   className="form-control" 
@@ -81,7 +84,6 @@ function SignUp() {
                   placeholder="Phone #" 
                 />
               </div>
-
               <div className="form-group col-md-6">
                 {/* <label for="inputBusinessName">Buisness Name</label> */}
                 <input 
@@ -138,7 +140,7 @@ function SignUp() {
                 </label>
               </div>
             </div>
-            <a href="/signin"><button type="submit" onClick={handleFormSubmit} className="btn btn-primary btn-lg btn-block">Sign Up</button></a>
+            <a href="/signin"><button type="submit" onClick={handleFormSubmit} className="inverted" id="signup-login-btn">Sign Up</button></a>
           </form>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-
+import { Link } from "react-router-dom";
 import video from "../../assets/production_ID_4281239.mp4"
 
 // The ...props means, spread all of the passed props onto this element
@@ -17,6 +17,7 @@ function WelcomeHero(props) {
                     <div className="w-100 text-white">
                         <h1 className="display-3">Inventory Tracker</h1>
                         <p className="lead mb-0">Robust yet easy to use inventory management for any business!</p>
+                        <Link to="/signup"><button className="inverted" id="video-btn">Get Started Today</button></Link>
                     </div>
                 </div>
             </div>
