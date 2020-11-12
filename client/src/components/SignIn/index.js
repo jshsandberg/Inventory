@@ -19,7 +19,8 @@ function SignUp () {
             <input type="checkbox" value="remember-me" /> Remember me
           </label>
         </div>
-        <button className="btn btn-primary btn-lg btn-block" type="submit">Sign in</button>
+        <button className="inverted" id="signup-login-btn" type="submit">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i>
+</button>
         <p className="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
       </form>
       </div>
