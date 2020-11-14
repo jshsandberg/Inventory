@@ -6,6 +6,7 @@ import WelcomeFeatures from "../components/WelcomeFeatures";
 import Footer from "../components/Footer";
 import Testimonials from "../components/Testimonials";
 import WelcomePromo from "../components/WelcomePromo";
+import ShapeDivider from "../components/ShapeDivider";
 
 function WelcomePage() {
   return(
@@ -13,6 +14,7 @@ function WelcomePage() {
         <WelcomeNavBar />
         <WelcomeHero />
         <WelcomeIntro />
+        <ShapeDivider />
         <WelcomeFeatures />
         <Testimonials />
         <WelcomePromo />
