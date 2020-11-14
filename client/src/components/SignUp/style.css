@@ -19,5 +19,5 @@
 #signup-login-btn {
     width: 100%;
     font-size: 16px;
-    max-height: 48px;
+    min-height: 50px;
 }

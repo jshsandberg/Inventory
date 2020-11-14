@@ -48,6 +48,6 @@ header {
   }
   #video-btn {
     font-size: 18px;
-    max-height: 60px;
+    min-height: 50px;
     margin: 15px 0px;
   }
