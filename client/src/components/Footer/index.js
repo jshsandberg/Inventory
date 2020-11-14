@@ -3,12 +3,12 @@ import "./style.css";
 
 import github from "../../assets/GitHub-Mark-Light-120px-plus.png"
 
-function Footer () {
+function Footer (props) {
 
 
   return (
     <>
-        <div className="container-fluid" id="footer-container">
+        <div className="container-fluid" id="footer-container" style={props.style}>
         <div className="row" id="footer">
             <div className="col-md-4" id="footer-links">
                 Links to Pages

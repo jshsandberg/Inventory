@@ -11,8 +11,8 @@ function NavBar(props) {
                     Inventory
                 </a>
                 <div className="w-100 text-right">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
   </button>
                 </div>
             </div>
@@ -22,7 +22,7 @@ function NavBar(props) {
                         <a href="/" className="nav-link ">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a href="#" className="nav-link">Contact</a>
+                        <a href="/contact" className="nav-link">Contact</a>
                     </li>
                 </ul>
                 <a href="/signin" className="nav-link"><button type="button" className="btn btn-light">Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
