@@ -10,6 +10,11 @@ var bcrypt = require('bcrypt'),
 
 
 const userSchema = new Schema({
+  username:{
+    type:String,
+    required:true,
+    index:{unique:true}
+  },
   name: {
     //This is the first and last name of the User
     type: String,
@@ -28,20 +33,16 @@ const userSchema = new Schema({
   business:{
       //business name
       type:String,
-      default:""
+      default:"Not Given"
   },
   industry:{
       //User's business of industry
     type:String,
     enum:['Advertising', 'Education', 'Electronics', 'Fashion', 'Food', 'Printing', 'Publishing', 'Other'],
     trim: true,
-    required: true
+    default: null
   },
-  username:{
-    type:String,
-    required:true,
-    index:{unique:true}
-  },
+  
   password:{
     type:String,
     required:true

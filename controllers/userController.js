@@ -2,10 +2,13 @@ const db = require("../models");
 
 // Defining methods for the userController
 module.exports = {
-  findById:function(req, res) {
+  find:function(req, res) {
     db.User
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
+      .find({username: req.params.username})
+      .then(dbModel=> {
+        res.json(dbModel);
+        console.log(req.params.username);
+      })
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
@@ -27,5 +30,40 @@ module.exports = {
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-  }
+  },
+  // find:function(req, res) { 
+  //   db.User
+  //     .find({username: req.params.username})
+  //     .then((req)=>{
+  //       // if(!req.body.username){ 
+  //       //   res.json({success: false, message: "Username was not given"}) 
+  //       // } else { 
+  //       //   if(!req.body.password){ 
+  //       //     res.json({success: false, message: "Password was not given"}) 
+  //       //   }else{ 
+  //       //     passport.authenticate('local', function (err, user, info) {  
+  //       //        if(err){ 
+  //       //          res.json({success: false, message: err}) 
+  //       //        } else{ 
+  //       //         if (! user) { 
+  //       //           res.json({success: false, message: 'username or password incorrect'}) 
+  //       //         } else{ 
+  //       //           req.login(user, function(err){ 
+  //       //             if(err){ 
+  //       //               res.json({success: false, message: err}) 
+  //       //             }else{ 
+  //       //               const token =  jwt.sign({userId : user._id, username:user.username}, secretkey, {expiresIn: '24h'}) 
+  //       //               res.json({success:true, message:"Authentication successful", token: token }); 
+  //       //             } 
+  //       //           }) 
+  //       //         } 
+  //       //        } 
+  //       //     })(req, res); 
+  //       //   } 
+  //       // } 
+  //     }).catch(err => res.status(422).json(err));
+   
+  // }
+    
+
 };
