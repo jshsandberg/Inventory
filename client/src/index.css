@@ -43,8 +43,8 @@ button {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 10px 26px;
-  max-height: 38px;
+  padding: 5px 20px;
+  min-height: 40px;
   transition: 0.3s;
 }
 button:hover {
@@ -67,8 +67,8 @@ button:hover {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  padding: 10px 26px;
-  max-height: 38px;
+  padding: 5px 20px;
+  min-height: 40px;
   transition: 0.3s;
 }
 
