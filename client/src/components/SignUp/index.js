@@ -16,6 +16,7 @@ function SignUp() {
 
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log(formObject);
     API.saveuser({
       name: formObject.firstName + " " + formObject.lastName,
       email: formObject.email,
