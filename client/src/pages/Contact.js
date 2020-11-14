@@ -10,7 +10,7 @@ class ContactPage extends React.Component {
     <>
     <WelcomeNavBar />
     <JotformEmbed src="https://form.jotform.com/203186177330048" /> 
-    <Footer />
+    <Footer style={{marginTop: "-55px"}} />
   </>
   );
 }
