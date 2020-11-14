@@ -46,18 +46,18 @@ function InventoryForm() {
     return (
         <div className="container">
             {isSuccessful === false ?  <form>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputEmail1">Item Name</label>
-                    <input onChange={handleInputChange} name="name" type="text" class="form-control" id="form" aria-describedby="emailHelp" placeholder="Enter item name" />
+                    <input onChange={handleInputChange} name="name" type="text" className="form-control" id="form" aria-describedby="emailHelp" placeholder="Enter item name" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputPassword1">Date Added</label>
-                    <input onChange={handleInputChange} name="date" type="text" class="form-control" id="form" placeholder="##/##/####" />
+                    <input onChange={handleInputChange} name="date" type="text" className="form-control" id="form" placeholder="##/##/####" />
                 </div>
                 <div className="form-row unit">
-                    <div class="form-group col-md">
+                    <div className="form-group col-md">
                         <label for="inputState">Unit of Measurement</label>
-                        <select onChange={handleInputChange} name="unit" id="inputState" class="form-control">
+                        <select onChange={handleInputChange} name="unit" id="inputState" className="form-control">
                             <option selected>Choose...</option>
                             <option>Gallons</option>
                             <option>Pounds</option>
@@ -65,33 +65,33 @@ function InventoryForm() {
                             <option>Liters</option>
                         </select>
                     </div>
-                    <div class="form-group col-md">
+                    <div className="form-group col-md">
                         <label for="exampleInputPassword1">Amount</label>
-                        <input onChange={handleInputChange} name="amount" type="text" class="form-control" id="form" placeholder="Amount of unit" />
+                        <input onChange={handleInputChange} name="amount" type="text" className="form-control" id="form" placeholder="Amount of unit" />
                     </div>
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputPassword1">Recurring Shipment of Item Every --- Days</label>
-                    <input onChange={handleInputChange} name="cycle" type="text" class="form-control" id="form" placeholder="Number of Days" />
+                    <input onChange={handleInputChange} name="cycle" type="text" className="form-control" id="form" placeholder="Number of Days" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputPassword1">Cost per Unit</label>
-                    <input onChange={handleInputChange} name="cost" type="text" class="form-control" id="form" placeholder="$" />
+                    <input onChange={handleInputChange} name="cost" type="text" className="form-control" id="form" placeholder="$" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputPassword1">Selling Value of Unit</label>
-                    <input onChange={handleInputChange} name="value" type="text" class="form-control" id="form" placeholder="$" />
+                    <input onChange={handleInputChange} name="value" type="text" className="form-control" id="form" placeholder="$" />
                 </div>
-                <div class="form-group">
+                <div className="form-group">
                     <label for="exampleInputPassword1">Units Sold</label>
-                    <input onChange={handleInputChange} name="sold" type="text" class="form-control" id="form" placeholder="Number of units sold" />
+                    <input onChange={handleInputChange} name="sold" type="text" className="form-control" id="form" placeholder="Number of units sold" />
                 </div>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                <div className="form-check">
+                    <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                    <label className="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <br></br>
-                <button onClick={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
+                <button onClick={handleSubmit} type="submit" className="btn btn-primary">Submit</button>
             </form>
             :
             <div className="row">

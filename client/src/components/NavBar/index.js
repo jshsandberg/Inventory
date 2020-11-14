@@ -12,8 +12,9 @@ function NavBar(props) {
                     Inventory
                 </Link>
                 <div className="w-100 text-right">
+
                     <button 
-                        class="navbar-toggler" 
+                        className="navbar-toggler" 
                         type="button" 
                         data-toggle="collapse" 
                         data-target="#myNavbar" 
@@ -21,7 +22,7 @@ function NavBar(props) {
                         aria-expanded="false" 
                         aria-label="Toggle navigation"
                     >
-                        <span class="navbar-toggler-icon"></span>
+                        <span className="navbar-toggler-icon"></span>
                     </button>
                 </div>
             </div>
