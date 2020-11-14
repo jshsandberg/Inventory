@@ -6,7 +6,7 @@ import "./style.css"
 function InventoryForm() {
 
     const [inventoryObject, setInventoryObject] = useState({});
-    const [isSuccessful, setIsSuccessful] = useState(false)
+    const [isSuccessful, setIsSuccessful] = useState(false);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
