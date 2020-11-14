@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 // That way we don't have to define them all individually
 function WelcomeNavBar(props) {
     return (
-        <nav className="navbar navbar-expand-lg bg-light fixed-top">
+        <nav className="navbar navbar-expand-lg bg-light">
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
                 <Link className="navbar-brand" to="/">

@@ -8,6 +8,7 @@ function InventoryForm() {
     const [inventoryObject, setInventoryObject] = useState({});
     const [isSuccessful, setIsSuccessful] = useState(false);
 
+
     const sectionStyle = {
         paddingBottom: "30px",
         textAlign: "center"
