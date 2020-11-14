@@ -9,7 +9,7 @@ function WelcomeHero(props) {
     return (
         <header>
             <div className="overlay"></div>
-            <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+            <video playsInline="playsinline" autoPlay="autoplay" muted="muted" loop="loop">
                 <source src={video} type="video/mp4" />
             </video>
             <div className="container h-100">
