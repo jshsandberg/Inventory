@@ -33,14 +33,14 @@ const userSchema = new Schema({
   business:{
       //business name
       type:String,
-      default:""
+      default:"Not Given"
   },
   industry:{
       //User's business of industry
     type:String,
     enum:['Advertising', 'Education', 'Electronics', 'Fashion', 'Food', 'Printing', 'Publishing', 'Other'],
     trim: true,
-    required: true
+    default: null
   },
   
   password:{

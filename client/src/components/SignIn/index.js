@@ -6,7 +6,7 @@ import API from "../../utils/API";
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
 
-function SignUp () {
+function SignIn () {
 
   // const [formObject, setFormObject] = useState({})
   // const [authenticateSuccess, setAuthenticateSuccess] = useState(false);
@@ -52,27 +52,25 @@ function SignUp () {
 
   return (
     <div className="container">
-    <div className="row">
-    <div className="col-12">
-      <form className="form-signin">
-        <h1 className="h3 mb-3">Please sign in...</h1>
-        <label for="inputEmail" className="sr-only">Email address</label>
-        <input type="text" id="inputEmail" className="form-control" placeholder="Email address" name="username" required autofocus onChange={handleInputChange}/>
-        <label for="inputPassword" className="sr-only" >Password</label>
-        <input type="password" id="inputPassword" className="form-control" placeholder="Password" name="password" required onChange={handleInputChange}/>
-        <div className="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="remember-me" /> Remember me
-          </label>
+      <div className="row">
+        <div className="col-12">
+          <form className="form-signin" onSubmit={handleFormSubmit}>
+            <h1 className="h3 mb-3">Please sign in...</h1>
+            <label for="inputEmail" className="sr-only">Email address</label>
+            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autofocus />
+            <label for="inputPassword" className="sr-only">Password</label>
+            <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+            <div className="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me" />Remember me
+              </label>
+            </div>
+            <button className="inverted" id="signup-login-btn" type="submit">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+          </form>
         </div>
-        <button className="inverted" id="signup-login-btn" type="submit" onClick={handleFormSubmit}>Sign In <i class="fa fa-sign-in" aria-hidden="true"></i>
-</button>
-        <p className="mt-5 mb-3 text-muted">&copy; 2017-2020</p>
-      </form>
       </div>
-      </div>
-      </div>
+    </div>
   )
 }
 
-export default SignUp;
+export default SignIn;

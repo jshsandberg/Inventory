@@ -1,8 +1,12 @@
 export default function validate(values) {
   let errors = {};
 
-  if (!values.firstName || !values.lastName) {
-    errors.name = "Name is required";
+  if (!values.firstName) {
+    errors.firstName = "First name is required";
+  }
+
+  if (!values.lastName) {
+    errors.lastName = "Last name is required";
   }
 
   if (!values.email) {
