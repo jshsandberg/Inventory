@@ -1,17 +1,19 @@
 import React from "react";
 import Footer from "../components/Footer";
 import WelcomeNavBar from "../components/WelcomeNavBar";
-// import SignIn from "../components/SignIn/index";
+import JotformEmbed from 'react-jotform-embed';
 
-function ContactPage() {
-  return(
+
+class ContactPage extends React.Component {
+  render (){
+  return (
     <>
-
-    <WelcomeNavBar/>
+    <WelcomeNavBar />
+    <JotformEmbed src="https://form.jotform.com/203186177330048" /> 
     <Footer />
-
-    </>
+  </>
   );
+}
 }
 
 export default ContactPage;
