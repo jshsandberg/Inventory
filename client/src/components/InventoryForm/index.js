@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-import Shipment from "../../components/Shipment/index"
+import { Link } from "react-router-dom"
 import "./style.css"
 
 function InventoryForm() {
 
     const [inventoryObject, setInventoryObject] = useState({});
     const [isSuccessful, setIsSuccessful] = useState(false);
+
+
+    const sectionStyle = {
+        paddingBottom: "30px",
+        textAlign: "center"
+    }
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -88,9 +94,37 @@ function InventoryForm() {
                 <button onClick={handleSubmit} type="submit" class="btn btn-primary">Submit</button>
             </form>
             :
-            <div>
-            <h1>hello</h1> 
-            <button onClick={(e) => setIsSuccessful(false)}></button>
+            <div className="row">
+                <div className="col-2">
+                   
+                </div> 
+                <div className="col-8">
+                    <div className="shadow container">
+                        <h1 style={ sectionStyle }>Your inventory has been updated and saved!</h1>
+                        <div className="row">
+                            <div className="col-3">
+
+                            </div>
+                            <div className="col-3">
+                            <button style={{float: "left"}} onClick={(e) => setIsSuccessful(false)}>More</button>
+
+                            </div>
+                            <div className="col-3">
+                                <Link to="/inventory"><button  style={{float: "right"}}>Home</button></Link>
+                               
+
+                            </div>
+                            <div className="col-3">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div> 
+                <div className="col-2">
+                   
+                </div> 
+            
             </div>
             }
            
