@@ -42,11 +42,12 @@ const userSchema = new Schema({
     trim: true,
     required: true
   },
-  
   password:{
     type:String,
     required:true
-  }
+  }, 
+  inventory: 
+    [{ type: Schema.Types.ObjectId, ref: 'Inventory' }]
 });
 
 userSchema.pre('save', function(next) {
@@ -70,19 +71,11 @@ userSchema.pre('save', function(next) {
   });
 });
 
-userSchema.methods.comparePassword = function(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
-      if (err) 
-      {
-        return cb(err)
-      };
-      cb(null, isMatch);
-  });
+userSchema.methods.comparePassword = async function(candidatePassword) {
+ const result = await bcrypt.compare(candidatePassword, this.password);
+ return result;
 };
 
-userSchema.methods.authenticate = function(password) {      
-  return this.password === password;
-}
 
 userSchema.plugin(passportLocalMongoose);
 //const User = mongoose.model("User", userSchema);

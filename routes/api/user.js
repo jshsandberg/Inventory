@@ -1,6 +1,7 @@
 //resource:https://www.geeksforgeeks.org/nodejs-authentication-using-passportjs-and-passport-local-mongoose/
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
+const passport = require("../../passport")
 
 // Matches with "/api/users"
 router.route("/signup")
@@ -14,17 +15,8 @@ router
   .put(userController.update)
   //.delete(userController.remove);
 
-router.post('/signin', function(req, res) { 
-      
-    Users=new User({email: req.body.email, username : req.body.username}); 
-  
-          User.register(Users, req.body.password, function(err, user) { 
-            if (err) { 
-              res.json({success:false, message:"Your account could not be saved. Error: ", err})  
-            }else{ 
-              res.json({success: true, message: "Your account has been saved"}) 
-            } 
-          }); 
+router.post('/signin', passport.authenticate("local"), (req,res)=> {
+  res.json(req.user)
 }); 
 
 
