@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const inventSchema = new Schema({
-  title: {
-    //business name and that will give us the inventory
-    //this will give us an id
-    //business name could be the ID
+  name: {
     type: String,
     required: true
   },
@@ -27,6 +24,16 @@ const inventSchema = new Schema({
       default: Date.now
     }
   }
+
+  dateAdded: {
+    type: String,
+    required: true
+  },
+  quantity: String,
+  cycle: String,
+  cost: String,
+  value: String,
+  sold: String
 });
 
 const Inventory = mongoose.model("Inventory", inventSchema);

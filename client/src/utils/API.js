@@ -17,7 +17,7 @@ export default {
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {
-    return axios.post("/api/user/inventory", inventoryData)
+    return axios.post("/api/inventory", inventoryData)
   },
   getInventory: function(){
     return new Promise((resolve,reject)=> resolve(inventory))

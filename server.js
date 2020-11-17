@@ -1,31 +1,13 @@
 const express = require("express");
-const User = require('./models/user');
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 const path =require("path");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const passport = require('./passport');
 app.use(passport.initialize());
 app.use(passport.session());
 //static authenticate method of model in local strategy
-passport.use(new LocalStrategy(function(username, password,done){
-  User.find({username:username}), function(err, user){
-    if(err){return done(err);}
-    if(!user){return done(null,false);}
-    if(!user.verifyPassword(password)){
-      return done(null,false);
-    }
-    return done(null,user);
-  }}));
-  
-  // User.authenticate()));
-
-// use static serialize and deserialize of model for passport session support
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
