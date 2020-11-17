@@ -1,3 +1,13 @@
 .center {
     justify-content: center;
 }
+#inventory-table {
+    border: 1px solid #dee2e6;
+}
+#inventory-table thead th{
+border-bottom: 2px solid grey;
+font-weight: 600;
+}
+#qty-col {
+    text-align: center;
+}

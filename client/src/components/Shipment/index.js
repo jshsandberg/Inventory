@@ -49,7 +49,7 @@ function Shipment() {
 
     return (
         <div>
-                   <div className="container">
+                   <div className="container" id="inventory-container">
           <h1>Inventory Information</h1>
           <div className="row">
             <div className="col-3">

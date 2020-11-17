@@ -3,25 +3,15 @@ import "./style.css";
 import { Link } from "react-router-dom";
 
 function NavBar(props) {
-  console.log("I see NavBar");
-  return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    return (
+        <nav className="navbar navbar-expand-lg bg-light">
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
-                <Link className="navbar-brand" href="/">
-                    Inventory
+                <Link className="navbar-brand" to="/">
+                Inventory
                 </Link>
                 <div className="w-100 text-right">
-
-                    <button 
-                        className="navbar-toggler" 
-                        type="button" 
-                        data-toggle="collapse" 
-                        data-target="#myNavbar" 
-                        aria-controls="myNavbar" 
-                        aria-expanded="false" 
-                        aria-label="Toggle navigation"
-                    >
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                 </div>
@@ -35,14 +25,12 @@ function NavBar(props) {
                         <Link href="/contact" className="nav-link">Contact</Link>
                     </li>
                 </ul>
-                <a href="/signin" className="nav-link">
-                    <button type="button" className="btn btn-light">
-                        Logout <i className="fa fa-sign-out" aria-hidden="true"></i>
-                    </button>
-                </a>
+                <Link to="/signin" className="nav-link">
+                    <button type="button" id="get-started-button">Logout <i className="fa fa-sign-out" aria-hidden="true"></i></button>
+                </Link>
             </div>
         </nav>
-  );
+    );
 }
 
 export default NavBar;

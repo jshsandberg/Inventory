@@ -1,7 +1,6 @@
 .form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
+  max-width: 350px;
+  padding: 50px;
   margin: auto;
   box-shadow: 0px 0px 10px #e0e0e0;
     border-radius: 5px;
@@ -28,4 +27,15 @@
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+@media only screen and (max-width: 767px) {
+  #form-signup {
+  width: 100%;
+  box-shadow: unset;
+  }
+  #background {
+      background-image:unset;
+      background-color: white;
+      padding: 0px;
+  }
 }
