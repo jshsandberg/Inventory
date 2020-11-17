@@ -1,9 +1,9 @@
 .form-signup {
-    width: 700px;
+    max-width: 700px;
     margin: auto;
     box-shadow: 0px 0px 10px #e0e0e0;
     border-radius: 5px;
-    padding: 25px;
+    padding: 50px;
     background: #ffffffe6;
 }
 .form-control {
@@ -24,4 +24,15 @@
 
 .signupHelp {
     color: red;
+}
+@media only screen and (max-width: 767px) {
+    #form-signup {
+        width: 100%;
+        box-shadow: unset;
+    }
+    #background {
+        background-image:unset;
+        background-color: white;
+        padding: 0px;
+    }
 }
