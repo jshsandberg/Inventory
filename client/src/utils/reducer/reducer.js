@@ -1,19 +1,19 @@
 import React,{createContext, useReducer, useContext} from 'react';
-import {REMOVE_INV, UPDATE_INV,ADD_INV} from "./action";
+import {SET_USER} from "./action";
 import { combineReducers } from 'redux';
 import { sessionReducer } from 'redux-react-session';
 // 
 const StoreContext=createContext();
 const {Provider}=StoreContext;
+const isEmpty=require("is-empty");
 
 const userReducers = (state, action) => {
     switch(action.type){
-        case ADD_INV:
+        case SET_USER:
             return{
                 ...state,
-                id:action._id,
-                inventory:{id, ...state.inventory},
-                removeInv:false
+                iisAuthenticated:!isEmpty(action.payload),
+                id:action.payload
             };
         default:
             return state;
@@ -33,15 +33,8 @@ export default function createReducer(injectedReducers){
 
 const StoreProvider=({value=[],...props})=>{
     const[state, dispatch]=useReducer(reducer,{
-        inventory:[],
-        _id:0,
-        title:"",
-        inventory:{
-            name:"",
-            quantity:0,
-            dateCreated:""
-        },
-        removeInv:false
+        isAuthenticated:false,
+        id:{}
     });
 
     return <Provider value={[state,dispatch]} {...props} />
