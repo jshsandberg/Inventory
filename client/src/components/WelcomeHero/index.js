@@ -20,7 +20,7 @@ function WelcomeHero(props) {
                         <Link to="/signup"><button className="inverted" id="video-btn">Get Started Today</button></Link>
                     </div>
                 </div>
-            </div>
+            </div> 
         </header>
     );
 }

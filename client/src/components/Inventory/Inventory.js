@@ -84,70 +84,66 @@ function InventoryItems() {
     setInventoryState({inventory:newInv})
   }
 
-
-
-
-  return (
+    return (
         <>
-            <div className="container">
+            <div className="container" id="inventory-container">
                 <Modal updateInventory={updateInventory} item={item} />
-                    <h1>Stock Inventory</h1>
-                        <table className="table table-striped">
-                            <thead>
+                <h1>Stock Inventory</h1>
+                <table className="table table-striped" id="inventory-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="10%">#</th>
+                            <th scope="col" width="45%">Item Name</th>
+                            <th scope="col" width="15%">Date Added</th>
+                            <th scope="col" width="10%">Quantity</th>
+                            <th scope="col" width="10%">Update</th>
+                            <th scope="col" width="10%">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {inventoryState.inventory.map((item, i) => {
+                            return (
+                            <>
                                 <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Item Name</th>
-                                    <th scope="col">Date Added</th>
-                                    <th scope="col">Quantity</th>
-                                    <th scope="col">Update</th>
-                                    <th scope="col">Delete</th>
+                                    <th scope="row"></th>
+                                        <td>{item.item}</td>
+                                        <td>{item.dateAdded}</td>
+                                        {item.quantity < 5 ? <td id="qty-col" style={{ backgroundColor: "#ff000052" }}>{item.quantity}</td> : <td id="qty-col">{item.quantity}</td>}
+                                        <td>
+                                            <button
+                                                key={i}
+                                                type="button"
+                                                className="btn btn-primary"
+                                                data-toggle="modal"
+                                                data-target="#exampleModal"
+                                                onClick={() => setItem(({...item, i}))}
+                                                >
+                                            Update
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <button
+                                                type="button"
+                                                className="btn btn-primary"
+                                                style={{ backgroundColor: "red" }}
+                                                >
+                                            Delete
+                                            </button>
+                                        </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {inventoryState.inventory.map((item, i) => {
-                                    return (
-                                    <>
-                                        <tr>
-                                            <th scope="row"></th>
-                                                <td>{item.item}</td>
-                                                <td>{item.dateAdded}</td>
-                                                {item.quantity < 5 ? <td style={{ backgroundColor: "red" }}>{item.quantity}</td> : <td>{item.quantity}</td>}
-                                                <td>
-                                                    <button
-                                                        key={i}
-                                                        type="button"
-                                                        className="btn btn-primary"
-                                                        data-toggle="modal"
-                                                        data-target="#exampleModal"
-                                                        onClick={() => setItem(({...item, i}))}
-                                                        >
-                                                    Update
-                                                    </button>
-                                                </td>
-                                                <td>
-                                                    <button
-                                                        type="button"
-                                                        className="btn btn-primary"
-                                                        style={{ backgroundColor: "red" }}
-                                                        >
-                                                    Delete
-                                                    </button>
-                                                </td>
-                                        </tr>
-                                    </>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                            </>
+                            )
+                        })}
+                    </tbody>
+                </table>
             </div >
-                
-            <Shipment
-                shipment={inventoryState}
-            >
-            </Shipment>
+
+        <Shipment
+        shipment={inventoryState} >
+        </Shipment>
 
         </>
-  )
+    )
 };
 
-export default InventoryItems
+export default InventoryItems;
