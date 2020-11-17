@@ -66,18 +66,16 @@ function Shipment() {
               <div className="tab-content" id="nav-tabContent">
                 {shipment.inventory.map((shipment, i) => {
                   return (
-                      
-                    <div className="tab-pane fade show" id={`list-${shipment.item}`} role="tabpanel" aria-labelledby={`list-${shipment.item}-list`}>
-                      <p>Last Bought: {shipment.dateAdded}</p>
-                      <p>Day Inventory will be Arriving: {findDate(shipment.cycle[1].every)}</p>
-                      <p>Unit Price: {shipment.sale.unitPrice}</p>
-                      <p>Sale Price: {shipment.sale.salePrice}</p>
-                      <p>Units Sold: {shipment.sale.unitsSold}</p>
-                      <p>Net Gain: {((shipment.sale.salePrice) - (shipment.sale.unitPrice)) * (shipment.sale.unitsSold)}</p>
-                      <p>Profit Margin: {(Math.floor(((shipment.sale.salePrice) - (shipment.sale.unitPrice)) / (shipment.sale.unitsSold) * 100))} %</p>
-                    </div>
+                      <div className="tab-pane fade show" id={`list-${shipment.item}`} role="tabpanel" aria-labelledby={`list-${shipment.item}-list`}>
+                        <p>Last Bought: {shipment.dateAdded}</p>
+                        <p>Day Inventory will be Arriving: {findDate(shipment.cycle[1].every)}</p>
+                        <p>Unit Price: {shipment.sale.unitPrice}</p>
+                        <p>Sale Price: {shipment.sale.salePrice}</p>
+                        <p>Units Sold: {shipment.sale.unitsSold}</p>
+                        <p>Net Gain: {((shipment.sale.salePrice) - (shipment.sale.unitPrice)) * (shipment.sale.unitsSold)}</p>
+                        <p>Profit Margin: {(Math.floor(((shipment.sale.salePrice) - (shipment.sale.unitPrice)) / (shipment.sale.unitsSold) * 100))} %</p>
+                      </div>
                   )
-
                 })}
 
               </div>

@@ -5,21 +5,19 @@ import SideBar from "../components/SideBar";
 
 function InventoryPage() {
   return(
-    <div className="container-fluid">
+    <>
+    <NavBar />
+    <div className="container-fluid" id="inventory-page">
       <div className="row">
-        <div className="col-12">
-          <NavBar />
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-3">
+        <div className="col-2">
           <SideBar />
         </div>
-        <div className="col-9">
+        <div className="col-10">
           <Inventory></Inventory>
         </div>
       </div>
     </div>  
+    </>
   );
 }
 

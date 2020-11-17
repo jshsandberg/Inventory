@@ -146,4 +146,4 @@ function InventoryItems() {
     )
 };
 
-export default InventoryItems
+export default InventoryItems;

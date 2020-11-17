@@ -55,6 +55,9 @@ button:hover {
     box-shadow: none;
     text-shadow: none;
 }
+button:focus {
+  outline: none;
+}
 .inverted {
   color: #fff;
   border: 2px solid #07b316;
@@ -86,4 +89,11 @@ button:hover {
 }
 .nav-link:hover, .nav-link:active {
   color: #10b116;
+}
+#inventory-page {
+  padding: 0px;
+  overflow: hidden;
+}
+#inventory-container {
+  padding: 25px 0px;
 }

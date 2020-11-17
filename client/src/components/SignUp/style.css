@@ -26,12 +26,12 @@
 }
 @media only screen and (max-width: 767px) {
     #form-signup {
-    width: 100%;
-    box-shadow: unset;
+        width: 100%;
+        box-shadow: unset;
     }
     #background {
         background-image:unset;
         background-color: white;
         padding: 0px;
     }
-  }
+}
