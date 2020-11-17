@@ -25,7 +25,6 @@ function SignUp() {
     event.persist();
     const { name, value } = event.target;
     setValues({ ...values, [name]: value })
-
   };
 
   function handleSubmit(event) {
@@ -62,10 +61,11 @@ function SignUp() {
                   type="text" 
                   className="form-control" 
                   name="firstName" 
-                  onChange={handleChange} 
+                  onChange={handleChange}
                   id="inputFirstName" 
                   placeholder="First Name" 
                 />
+                <small className="required text-muted">* Required</small><br/>
                 {errors.firstName && (
                   <small id="nameHelp" className="signupHelp">{errors.firstName}</small>
                 )}
@@ -79,6 +79,7 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Last Name" 
                 />
+                <small className="required text-muted">* Required</small><br/>
                 {errors.lastName && (
                   <small id="nameHelp" className="signupHelp">{errors.lastName}</small>
                 )}
@@ -95,6 +96,7 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Email Address" 
                 />
+                <small className="required text-muted">* Required</small><br/>
                 {errors.email && (
                   <small id="nameHelp" className="signupHelp">{errors.email}</small>
                 )}
@@ -108,6 +110,7 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Phone #" 
                 />
+                <small className="required text-muted">* Required</small><br/>
                 {errors.phone && (
                   <small id="phoneHelp" className="signupHelp">{errors.phone}</small>
                 )}
@@ -125,7 +128,7 @@ function SignUp() {
               <div className="form-group col-md-6">
                 {/* <label for="inputState">Industry</label> */}
                 <select name="industry" onChange={handleChange} className="form-control">
-                  <option selected>Choose your industry...</option>
+                  <option defaultValue>Choose your industry...</option>
                   <option data-value="advertising">Advertising</option>
                   <option data-value="education">Education</option>
                   <option data-value="electronics">Electronics</option>
@@ -148,6 +151,7 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Username" 
                 />
+                <small className="required text-muted">* Required</small><br/>
                 {errors.username && (
                   <small id="usernameHelp" className="signupHelp">{errors.username}</small>
                 )}
@@ -161,6 +165,7 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Password" 
                 />
+                <small className="required text-muted">* Required</small><br/>
                 {errors.password && (
                   <small id="passwordHelp" className="signupHelp">{errors.password}</small>
                 )}
@@ -169,7 +174,7 @@ function SignUp() {
             <div className="form-group">
               <div className="form-check">
                 <input className="form-check-input" type="checkbox" id="gridCheck" />
-                <label className="form-check-label" for="gridCheck">
+                <label className="form-check-label" htmlFor="gridCheck">
                   By checking this box, you agree to the <a href="*">terms and service</a> of this site.
                 </label>
               </div>

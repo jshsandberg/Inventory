@@ -20,21 +20,23 @@ function Footer (props) {
             </div>
             <div className="col-md-4" id="footer-team">
                 <table width="100%" cellPadding="5">
-                    <tr>
-                        <td>Amin Bouzoita <img src={github} alt="github" className="github" /></td>
-                    </tr>
-                    <tr>
-                        <td>Crystal Han <img src={github} alt="github" className="github" /></td>
-                    </tr>
-                    <tr>
-                        <td>Eric Folenta <img src={github} alt="github" className="github" /></td>
-                    </tr>
-                    <tr>
-                        <td>Josh Sandberg <img src={github} alt="github" className="github" /></td>
-                    </tr>
-                    <tr>
-                        <td>Spencer Smith <img src={github} alt="github" className="github" /></td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td>Amin Bouzoita <img src={github} alt="github" className="github" /></td>
+                        </tr>
+                        <tr>
+                            <td>Crystal Han <img src={github} alt="github" className="github" /></td>
+                        </tr>
+                        <tr>
+                            <td>Eric Folenta <img src={github} alt="github" className="github" /></td>
+                        </tr>
+                        <tr>
+                            <td>Josh Sandberg <img src={github} alt="github" className="github" /></td>
+                        </tr>
+                        <tr>
+                            <td>Spencer Smith <img src={github} alt="github" className="github" /></td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
