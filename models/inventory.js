@@ -2,14 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const inventSchema = new Schema({
-  name: {
-    type: String,
-    required: true
-  },
+  // name: {
+  //   type: String,
+  //   required: true
+  // },
 
   // Not all ingredients, just the recommended ingredients from scraped web pages
   // from which seed data was sourced
-  inventory: {
+  // inventory: {
     name:{
       type:String,
       default:"",
@@ -22,8 +22,8 @@ const inventSchema = new Schema({
     dateCreated:{
       type: Date,
       default: Date.now
-    }
-  },
+    },
+  // },
 
   dateAdded: {
     type: String,

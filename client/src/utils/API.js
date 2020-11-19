@@ -20,6 +20,7 @@ export default {
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {
+    console.log("axios: " + inventoryData)
     return axios.post("/api/inventory", inventoryData)
   },
   getInventory: function(){

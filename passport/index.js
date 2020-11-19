@@ -16,6 +16,7 @@ passport.use(new LocalStrategy(
       console.log("authenticating...");
  
     db.User.findOne({username}).then(function(dbUser) {
+      console.log(dbUser)
       if (!dbUser) {
         console.log('no User')
         return done(null, false, {
@@ -27,19 +28,23 @@ passport.use(new LocalStrategy(
         bcrypt.compare(password, dbUser.password).then(function(result) {
         console.log(result);
           if (result === false) {
-            response.status(401);
+            
+            console.log("incorrect")
             return done(null, false, {
               message: "Incorrect password"
-            })
-          } 
+            }) 
+          } else {
+            return done(null, dbUser)
+          }
         }
       )}
       else {
-        return done(null, dbUser);
+        
+        console.log('it works')
     
       }
       
-    });
+    }).catch(err => console.log(err));
   }
 ));
 
