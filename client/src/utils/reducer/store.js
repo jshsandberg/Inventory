@@ -1,22 +1,22 @@
-import { createStore } from 'redux';
-import { sessionService } from 'redux-react-session';
-import createReducer from './reducer';
-import reduced from "./reducer";
+// import { createStore } from 'redux';
+// import { sessionService } from 'redux-react-session';
+// import createReducer from './reducer';
+// import reduced from "./reducer";
 
-export default function configureStore(history,session){
-    [session,
-    routerMiddleware(history),
-    thunkMiddleware];
+// export default function configureStore(history,session){
+//     [session,
+//     routerMiddleware(history),
+//     thunkMiddleware];
 
-    const enhancers=[applyMiddleware(...middlewares),];
+//     const enhancers=[applyMiddleware(...middlewares),];
 
-    const store = createStore(
-        createReducer(),
-        composeEnhancers(...enhancers)
-    );
+//     const store = createStore(
+//         createReducer(),
+//         composeEnhancers(...enhancers)
+//     );
 
-    store.injectedReducers={};
+//     store.injectedReducers={};
 
-    return store;
-}
-sessionService.initSessionService(store);
+//     return store;
+// }
+// sessionService.initSessionService(store);

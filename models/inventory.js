@@ -23,7 +23,7 @@ const inventSchema = new Schema({
       type: Date,
       default: Date.now
     }
-  }
+  },
 
   dateAdded: {
     type: String,

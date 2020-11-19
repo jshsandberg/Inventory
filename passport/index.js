@@ -1,34 +1,44 @@
 var passport = require("passport");
 var LocalStrategy = require("passport-local").Strategy;
+var bcrypt = require("bcrypt");
 
 var db = require("../models");
+const { response } = require("express");
 
 // Telling passport we want to use a Local Strategy. In other words, we want login with a username/email and password
 passport.use(new LocalStrategy(
   // Our user will sign in using an email, rather than a "username"
   {
     usernameField: "username"
+   
   },
   function(username, password, done) {
       console.log("authenticating...");
-      console.log(username)
-    // When a user tries to sign in this code runs
+ 
     db.User.findOne({username}).then(function(dbUser) {
-      // If there's no user with the given email
-      console.log(dbUser)
       if (!dbUser) {
+        console.log('no User')
         return done(null, false, {
           message: "Incorrect email."
         });
       }
-      // If there is a user with the given email, but the password the user gives us is incorrect
-      else if (!dbUser.comparePassword(password)) {
-        return done(null, false, {
-          message: "Incorrect password."
-        });
+ 
+      else if (password != null){
+        bcrypt.compare(password, dbUser.password).then(function(result) {
+        console.log(result);
+          if (result === false) {
+            response.status(401);
+            return done(null, false, {
+              message: "Incorrect password"
+            })
+          } 
+        }
+      )}
+      else {
+        return done(null, dbUser);
+    
       }
-      // If none of the above, return the user
-      return done(null, dbUser);
+      
     });
   }
 ));
@@ -44,5 +54,5 @@ passport.deserializeUser(function(obj, cb) {
   cb(null, obj);
 });
 
-// Exporting our configured passport
+
 module.exports = passport;

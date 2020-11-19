@@ -40,12 +40,18 @@ function SignIn () {
   console.log(formObject.username);
   function handleFormSubmit(event) {
     event.preventDefault();
+    console.log(formObject)
     API.getuser(
       formObject.username)
       .then((res) => {
-        const {password}=formObject.username;
-        console.log(password);
         console.log(res)
+        API.confirmuser(
+          {
+          username: formObject.username,
+          password: formObject.password
+          },
+          //res.data[0].password
+          )
        //history.push("/inventory")
       })
   }
@@ -58,11 +64,11 @@ function SignIn () {
             <h1 className="h3 mb-3">Please sign in...</h1>
             <div className="form-group">
             <label for="inputEmail" className="sr-only">Email Address</label>
-            <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autofocus />
+            <input name="username" onChange={handleInputChange} type="" id="inputEmail" className="form-control" placeholder="Email address" required autofocus />
             </div>
             <div className="form-group">
               <label for="inputPassword" className="sr-only">Password</label>
-              <input type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+              <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
             </div>
             <div className="checkbox mb-3">
               <label>
