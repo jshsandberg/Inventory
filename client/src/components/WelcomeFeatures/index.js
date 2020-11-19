@@ -8,7 +8,7 @@ function WelcomeFeatures(props) {
         <div className="container" id="features-container">
             <div className="row">
                 <div className="col-12">
-                    <h1 className="title">Why Inventory Tracker</h1>
+                    <h1 className="title">Why Shelf Keeper?</h1>
                     <hr />
                 </div>
             </div>

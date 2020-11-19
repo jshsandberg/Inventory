@@ -10,34 +10,20 @@ function Footer (props) {
     <>
         <div className="container-fluid" id="footer-container" style={props.style}>
         <div className="row" id="footer">
-            <div className="col-md-4" id="footer-links">
-                Links to Pages
-            </div>
-            <div className="col-md-4" id="footer-logo">
-                <h1>Inventory</h1>
+            <div className="col-12" id="footer-logo">
+                <h1>Shelf Keeper</h1>
                 <hr />
                 <p>Inventory © 2020</p>
             </div>
-            <div className="col-md-4" id="footer-team">
-                <table width="100%" cellPadding="5">
-                    <tbody>
-                        <tr>
-                            <td>Amin Bouzoita <img src={github} alt="github" className="github" /></td>
-                        </tr>
-                        <tr>
-                            <td>Crystal Han <img src={github} alt="github" className="github" /></td>
-                        </tr>
-                        <tr>
-                            <td>Eric Folenta <img src={github} alt="github" className="github" /></td>
-                        </tr>
-                        <tr>
-                            <td>Josh Sandberg <img src={github} alt="github" className="github" /></td>
-                        </tr>
-                        <tr>
-                            <td>Spencer Smith <img src={github} alt="github" className="github" /></td>
-                        </tr>
-                    </tbody>
-                </table>
+        </div>
+        <div className="row" id="footer">
+            <div className="col-12" id="footer-team">
+                <p>• Amin Bouzoita <img src={github} alt="github" className="github" /> |
+                Crystal Han <img src={github} alt="github" className="github" /> |
+                Eric Folenta <img src={github} alt="github" className="github" /> | 
+                Josh Sandberg <img src={github} alt="github" className="github" /> | 
+                Spencer Smith <img src={github} alt="github" className="github" /> •
+                </p>
             </div>
         </div>
         </div>
