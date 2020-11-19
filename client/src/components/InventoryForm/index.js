@@ -22,17 +22,17 @@ function InventoryForm() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log(inventoryObject)
+        //console.log(inventoryObject)
         API.saveinventory({
             name: inventoryObject.name,
-            dateAdded: inventoryObject.date,
             quantity:  inventoryObject.amount + " " + inventoryObject.unit,
+            dateAdded: inventoryObject.date,
             cycle: inventoryObject.cycle,
             cost: inventoryObject.cost,
             value: inventoryObject.value,
             sold: inventoryObject.sold
         }).then(res => {
-            //console.log(res)
+            console.log(res)
            res.status === 200 ? setIsSuccessful(true) : console.log("it didnt work")    
             // How to remove inputs without reloading
             //window.location.reload()

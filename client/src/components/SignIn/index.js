@@ -1,12 +1,28 @@
 import React from "react";
 import {useState} from "react";
 import {useHistory} from "react-router-dom";
+import axios from "axios";
 import "./style.css";
 import API from "../../utils/API";
 const LocalStrategy = require("passport-local").Strategy;
 const passport = require("passport");
 
 function SignIn () {
+
+  const UNAUTHORIZED = 401;
+  axios.interceptors.response.use(
+    response => response,
+    error => {
+      const {status} = error.response;
+      if (status === UNAUTHORIZED) {
+       console.log("UNAUTHORIZED");
+      }
+      return Promise.reject(error);
+   }
+  );
+
+
+  
 
   // const [formObject, setFormObject] = useState({})
   // const [authenticateSuccess, setAuthenticateSuccess] = useState(false);
@@ -44,7 +60,9 @@ function SignIn () {
     API.getuser(
       formObject.username)
       .then((res) => {
-        console.log(res)
+        console.log(res.data[0]._id)
+        console.log(res.data)
+        console.log(res.status)
         API.confirmuser(
           {
           username: formObject.username,
@@ -52,6 +70,8 @@ function SignIn () {
           },
           //res.data[0].password
           )
+          .catch(err => console.log(err))
+          
        //history.push("/inventory")
       })
   }

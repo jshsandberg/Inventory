@@ -1,3 +1,4 @@
+const { Mongoose } = require("mongoose");
 const db = require("../models");
 
 // Defining methods for the inventoryController
@@ -9,12 +10,19 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
-    console.log(req.body)
     db.Inventory
       .create(req.body)
       .then(dbModel => {
-        console.log(dbModel._id);
-        //db.User.by
+        console.log(dbModel);
+        res.status(200)
+        db.User.update({_id: "5fb3458d40738038e4547590" }, { $push: {inventory: dbModel}})
+        .then(res => {
+          //res.status(200)
+          console.log("updated")
+        })
+    
+          //res.json(dbModel)
+      
       })
       .catch(err => res.status(422).json(err));
   },
