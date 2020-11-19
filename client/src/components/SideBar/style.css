@@ -1,23 +1,36 @@
 .sidenav {
 	height: 100%;
-	z-index: 1;
-	top: 0;
-	left: 0;
-	background-color: rgb(0, 0, 0);
+	background-color: #252f3f;
 	overflow-x: hidden;
-	padding-top: 20px;
+	padding: 20px 5px 20px 5px;
+	font-size: 20px;
 }
 
 .sidenav a {
-	padding: 6px 8px 6px 16px;
+	padding: 5px 10px 5px 10px;
 	text-decoration: none;
-	font-size: 25px;
-	color: #818181;
+	color: #bbbbbb;
 	display: block;
 }
-
+.sidenav p {
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	color: #bbbbbb;
+	display: block;
+}
+.sidenav p {
+	margin: 0;
+	color: #616161;
+}
+.sidenav li {
+	padding: 5px 10px 5px 10px;
+	color: #818181;
+}
 .sidenav a:hover {
-	color: #f1f1f1;
+    color: #f1f1f1;
+    background: grey;
+	border-radius: 5px;
+	transition: 0.3s;
 }
 
 ul {

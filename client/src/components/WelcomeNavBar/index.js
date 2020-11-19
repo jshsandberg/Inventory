@@ -1,6 +1,8 @@
 import React from "react";
 import "./style.css";
 import { Link } from "react-router-dom";
+import Logo from "./../../assets/logo.png";
+
 
 // The ...props means, spread all of the passed props onto this element
 // That way we don't have to define them all individually
@@ -9,7 +11,9 @@ function WelcomeNavBar(props) {
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
-                    <Link className="navbar-brand" to="/">Inventory</Link>
+                    <Link className="navbar-brand" to="/">
+                        <img src={Logo} alt="logo" id="logo"></img>
+                        Shelf Keeper</Link>
                 <div className="w-100 text-right">
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>

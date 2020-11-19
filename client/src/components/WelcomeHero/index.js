@@ -15,7 +15,7 @@ function WelcomeHero(props) {
             <div className="container h-100">
                 <div className="d-flex h-100 text-center align-items-center">
                     <div className="w-100 text-white">
-                        <h1 className="display-3">Inventory Tracker</h1>
+                        <h1 className="display-3">Shelf Keeper</h1>
                         <p className="lead mb-0">Robust yet easy to use inventory management for any business!</p>
                         <Link to="/signup"><button className="inverted" id="video-btn">Get Started Today</button></Link>
                     </div>
