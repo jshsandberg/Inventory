@@ -10,12 +10,13 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    //console.log(req.params)
     db.Inventory
       .create(req.body)
       .then(dbModel => {
         console.log(dbModel);
         res.status(200)
-        db.User.update({_id: "5fb3458d40738038e4547590" }, { $push: {inventory: dbModel}})
+        db.User.updateOne({_id: dbModel.userId }, { $push: {inventory: dbModel}})
         .then(res => {
           //res.status(200)
           console.log("updated")

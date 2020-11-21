@@ -6,6 +6,8 @@ import API from "../../utils/API";
 
 import "./style.css"
 
+
+
 const Modal = (props) => {
 
   const {
@@ -62,16 +64,37 @@ const Modal = (props) => {
 function InventoryItems() {
 
   const [item, setItem] = useState({})
-  const [inventoryState, setInventoryState] = useState({ inventory: [] });
+  const [inventoryState, setInventoryState] = useState([]);
+  const [inventoryStateTest, setInventoryStateTest] = useState([]);
+  //const [userCode, setUserCode] = useState("5fb6e9c7439e183e44657964")
 
   useEffect(() => {
-    API.getInventory()
-      .then(data => setInventoryState(data))
-  }, []);
+    beforeMount();
+    setInventoryState(inventoryStateTest)
+    console.log(inventoryState)
+        
+    }, []);
 
 
- 
+    console.log(inventoryState)
 
+    const beforeMount = () => {
+        API.getuser("jshsandberg").then(res => {
+
+            const inventoryArr = []
+       
+            for (let i = 0; i < res.data[0].inventory.length; i++){
+                API.getInventory(res.data[0].inventory[i])
+                .then(res => {
+                    inventoryArr.push(res.data)
+                    console.log(inventoryArr)
+                 })
+             }
+            setInventoryStateTest(inventoryArr)
+    })
+}
+
+    
 
   //console.log(date.addDays(5).getMonth())
   //console.log(date.addDays(5).getDate())
@@ -101,16 +124,19 @@ function InventoryItems() {
                         </tr>
                     </thead>
                     <tbody>
-                        {inventoryState.inventory.map((item, i) => {
+                        {inventoryState.map((item, i) => {
+                            console.log(item.name)
+                            console.log(item.dateAdded)
+                            console.log(item.quantity)
                             return (
                             <>
                                 <tr>
                                     <th scope="row"></th>
-                                        <td>{item.item}</td>
+                                        <td>{item.name}</td>
                                         <td>{item.dateAdded}</td>
                                         {item.quantity < 5 ? <td id="qty-col" style={{ backgroundColor: "#ff000052" }}>{item.quantity}</td> : <td id="qty-col">{item.quantity}</td>}
                                         <td>
-                                            <button
+                                            {/* <button
                                                 key={i}
                                                 type="button"
                                                 className="btn btn-primary"
@@ -119,7 +145,7 @@ function InventoryItems() {
                                                 onClick={() => setItem(({...item, i}))}
                                                 >
                                             Update
-                                            </button>
+                                            </button> */}
                                         </td>
                                         <td>
                                             <button
@@ -138,9 +164,9 @@ function InventoryItems() {
                 </table>
             </div >
 
-        <Shipment
+        {/* <Shipment
         shipment={inventoryState} >
-        </Shipment>
+        </Shipment> */}
 
         </>
     )

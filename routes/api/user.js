@@ -19,9 +19,11 @@ router
 //   res.json(req.user)
 // }); 
 
+
 router.post('/signin', passport.authenticate("local"), (req,res)=> {
   console.log("it works")
-  res.json(req.user)
+  //console.log(res)
+  res.send(res.json())
 }); 
 
 

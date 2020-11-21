@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react"
-import API from "../../utils/API"
 
 
 function Shipment() {
@@ -8,8 +7,7 @@ function Shipment() {
     const [shipment, setShipment] = useState({ inventory: [] });
 
     useEffect(() => {
-        API.getInventory()
-          .then(data => setShipment(data))
+     
       }, []);
 
     const findDate = (days) => {
@@ -55,7 +53,7 @@ function Shipment() {
             <div className="col-3">
               <div className="list-group" id="list-tab" role="tablist">
                 {shipment.inventory.map((info, i) => {
-                    console.log(info)
+                    //console.log(info)
                   return (
                     <a className="list-group-item list-group-item-action" id={`list-${info.item}-list`} data-toggle="list" href={`#list-${info.item}`} role="tab" aria-controls={info.item}>{info.item}</a>
                   )
