@@ -32,7 +32,7 @@ function InventoryForm() {
             cost: inventoryObject.cost,
             value: inventoryObject.value,
             sold: inventoryObject.sold,
-            userId: "5fb6e9c7439e183e44657964"
+            userId: "5fb9d081658f8c4ac4f391c6"
         }
         // , userCode
         ).then(res => {

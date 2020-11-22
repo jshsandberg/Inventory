@@ -25,5 +25,9 @@ export default {
   
   getInventory: function(id) {
     return axios.get("/api/inventory/" + id)
+  },
+
+  updateInventory: function(id, inventoryData) {
+    return axios.put("/api/inventory/" + id + "/update", inventoryData)
   }
 };
