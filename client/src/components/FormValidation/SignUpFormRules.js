@@ -29,7 +29,7 @@ export default function validate(values) {
 
   if (!values.phone) {
     errors.phone = "Phone number is required";
-  } else if (values.phone !== Number) {
+  } else if(!/^\d{10}$/.test(values.phone)) {
     errors.phone = "Phone number invalid";
   }
 
