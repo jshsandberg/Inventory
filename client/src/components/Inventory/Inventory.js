@@ -63,20 +63,13 @@ const Modal = (props) => {
 
 
 function InventoryItems() {
-
-    // let userId = this.props.match.params.id
-    // console.log(userId)
-
-
-
-
-    
+  
 
   const [item, setItem] = useState({})
   const [inventoryState, setInventoryState] = useState([]);
   const [inventoryStateBeforeRender, setInventoryStateBeforeRender] = useState([]);
   const [rerender, setRerender] = useState(false)
-  const [userCode, setUserCode] = useState("5fb6e9c7439e183e44657964")
+
 
   useEffect(() => {
       
@@ -91,7 +84,7 @@ function InventoryItems() {
 
     const beforeMount = () => {
         API.getUserbyId(id.id).then(res => {
-            console.log(res.data.inventory)
+            //console.log(res.data.inventory)
 
             const inventoryArr = []
        
@@ -111,18 +104,9 @@ function InventoryItems() {
 }
 
 
-//console.log(id.id)
-    
-// const findTheId= () => {
-//     //console.log(id.id)
-//     API.getUserbyId(id.id).then(res => console.log(res)).catch(err => console.log(err));
-//   //console.log(date.addDays(5).getMonth())
-//   //console.log(date.addDays(5).getDate())
-// }
 
-// findTheId()
 
-  const updateInventory = (newItem, i) => {
+  const updateInventory = (newItem) => {
     API.updateInventory(newItem._id, newItem)
     .then(res => console.log(res))
   }
@@ -161,7 +145,7 @@ function InventoryItems() {
                                                 className="btn btn-primary"
                                                 data-toggle="modal"
                                                 data-target="#exampleModal"
-                                                onClick={() => setItem(({...item, i}))}
+                                                onClick={() => setItem(({...item}))}
                                                 >
                                             Update
                                             </button>

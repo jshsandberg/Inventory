@@ -67,7 +67,7 @@ function App() {
 
     <Router>
       <UserContext.Provider value={{ user, setUser }}>
-        <Route exact path="/inventory/user/:id" component={Inventory} /> 
+        <Route exact path="/inventory" component={Inventory} /> 
         <Route exact path="/" component={Welcome} />
         <Route exact path="/contact" component={Contact} />
         <Route exact path="/signup" component={SignUp} />
