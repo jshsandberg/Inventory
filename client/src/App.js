@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './App.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Welcome from "./pages/Welcome";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
@@ -12,13 +12,15 @@ import API from './utils/API'
 
 function App() {
   const [user, setUser] = useState(null);
+ 
+
   useEffect(()=> {
     if(localStorage.getItem("jwt")){
       const token = localStorage.getItem("jwt");
-      console.log(token)
+      //console.log(token)
       API.validateUser(token)
       .then(({data}) => {
-        console.log("YOUR USER ", data)
+        //console.log("YOUR USER ", data)
         setUser(data)
       })
       .catch(err => console.log(err))
@@ -26,10 +28,13 @@ function App() {
       //optional - redirect logic here if no token
     }
   }, [])
+
+  
+
   return (
 
     <Router>
-      <Route exact path="/inventory" component={Inventory}/>
+      <Route exact path="/inventory/user/:id" component={Inventory} /> 
       <Route exact path="/" component={Welcome} />
       <Route exact path="/contact" component={Contact} />
       <Route exact path="/signup" component={SignUp} />

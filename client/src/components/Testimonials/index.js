@@ -2,7 +2,7 @@ import React from "react";
 import "./style.css";
 
 function Testimonials(props) {
-    console.log("I see testimonials");
+    //console.log("I see testimonials");
     return (
         <div className="container-fluid" id="testimonial-container">
             <div className="row" id="testimonials">

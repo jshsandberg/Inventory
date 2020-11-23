@@ -4,13 +4,21 @@ const jwt = require("jsonwebtoken")
 // Defining methods for the userController
 module.exports = {
   find:function(req, res) {
+    //console.log(req.body)
     db.User
       .find({username: req.params.username})
       .then(dbModel=> {
         res.json(dbModel);
-        console.log(req.params.username);
+        //console.log(req.params.username);
       })
       .catch(err => res.status(422).json(err));
+  },
+  findById: function(req, res) {
+    console.log(req.params)
+    db.User
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).son(err));
   },
   create: function(req, res) {
     // let newUser = new User({
