@@ -1,25 +1,25 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
 import API from '../../utils/API';
-import validate from "../FormValidation/SignUpFormRules";
+// import validate from "../FormValidation/SignUpFormRules";
 
-import background from "../../assets/pexels-tiger-lily-4481323.jpg"
+// import background from "../../assets/pexels-tiger-lily-4481323.jpg"
 
 function SignUp() {
 
   const [values, setValues] = useState({});
-  const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // const [errors, setErrors] = useState({});
+  // const [isSubmitting, setIsSubmitting] = useState(false);
 
-  useEffect(() => {
-    if (Object.keys(errors).length === 0 && isSubmitting) {
-      signInCheck();
-    }
-  }, [errors]);
+  // useEffect(() => {
+  //   if (Object.keys(errors).length === 0 && isSubmitting) {
+  //     signInCheck();
+  //   }
+  // }, [errors]);
 
-  function signInCheck() {
-    console.log("No errors, continuing to save...");
-  }
+  // function signInCheck() {
+  //   console.log("No errors, continuing to save...");
+  // }
 
   function handleChange(event) {
     event.persist();
@@ -29,8 +29,8 @@ function SignUp() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    setErrors(validate(values));
-    setIsSubmitting(true);
+    // setErrors(validate(values));
+    // setIsSubmitting(true);
     API.saveuser({
       name: values.firstName + " " + values.lastName,
       email: values.email,
@@ -65,10 +65,6 @@ function SignUp() {
                   id="inputFirstName" 
                   placeholder="First Name" 
                 />
-                <small className="required text-muted">* Required</small><br/>
-                {errors.firstName && (
-                  <small id="nameHelp" className="signupHelp">{errors.firstName}</small>
-                )}
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputLastName">Last Name</label> */}
@@ -79,10 +75,6 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Last Name" 
                 />
-                <small className="required text-muted">* Required</small><br/>
-                {errors.lastName && (
-                  <small id="nameHelp" className="signupHelp">{errors.lastName}</small>
-                )}
               </div>
             </div>
             <div className="form-row">
@@ -96,10 +88,6 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Email Address" 
                 />
-                <small className="required text-muted">* Required</small><br/>
-                {errors.email && (
-                  <small id="nameHelp" className="signupHelp">{errors.email}</small>
-                )}
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputEmail">Phone</label> */}
@@ -110,10 +98,6 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Phone #" 
                 />
-                <small className="required text-muted">* Required</small><br/>
-                {errors.phone && (
-                  <small id="phoneHelp" className="signupHelp">{errors.phone}</small>
-                )}
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputBusinessName">Buisness Name</label> */}
@@ -151,10 +135,6 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Username" 
                 />
-                <small className="required text-muted">* Required</small><br/>
-                {errors.username && (
-                  <small id="usernameHelp" className="signupHelp">{errors.username}</small>
-                )}
               </div>
               <div className="form-group col-md-6">
                 {/* <label for="inputBusinessName">Password</label> */}
@@ -165,10 +145,6 @@ function SignUp() {
                   onChange={handleChange} 
                   placeholder="Password" 
                 />
-                <small className="required text-muted">* Required</small><br/>
-                {errors.password && (
-                  <small id="passwordHelp" className="signupHelp">{errors.password}</small>
-                )}
               </div>
             </div>
             <div className="form-group">

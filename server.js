@@ -2,16 +2,17 @@ const express = require("express");
 const path =require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const app = express();
+const cors = require("cors");
 const PORT = process.env.PORT || 3001;
-const passport = require('./passport');
-app.use(passport.initialize());
-app.use(passport.session());
+require("dotenv").config();
 //static authenticate method of model in local strategy
 
 // Define middleware here
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
@@ -19,12 +20,8 @@ if (process.env.NODE_ENV === "production") {
     response.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
-
-// Add routes, both API and view
-app.use(routes);
-app.use(express.json());
 // Connect to the Mongo DB
-mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/react", {
+mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
@@ -33,6 +30,8 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/react", {
  .then(() => console.log('MongoDB Connected!'))
  .catch(error => console.log('MongoDB did not connect: ', error));
 
+// Add routes, both API and view
+app.use(routes);
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

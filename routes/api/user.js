@@ -1,29 +1,14 @@
-//resource:https://www.geeksforgeeks.org/nodejs-authentication-using-passportjs-and-passport-local-mongoose/
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
-const passport = require("passport")
+const auth = require("../../middleware/auth");
 
-// Matches with "/api/users"
-router.route("/signup")
-  //.get(userController.findById)
-  .post(userController.create);
+router.route("/register")
+  .post(userController.register);
 
-// Matches with "/api/user/:id"
-router
-  .route("/:username")
-  .get(userController.find)
-  .put(userController.update)
-  //.delete(userController.remove);
+router.route("/login")
+  .post(userController.login);
 
-// router.post('/signin', passport.authenticate("local"), (req,res)=> {
-//   res.json(req.user)
-// }); 
-
-router.post('/signin', passport.authenticate("local"), (req,res)=> {
-  console.log("it works")
-  res.json(req.user)
-}); 
-
-
+router.route("/delete")
+  .delete(auth, userController.delete);
 
 module.exports = router;

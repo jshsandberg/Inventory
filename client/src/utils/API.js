@@ -12,11 +12,11 @@ export default {
     return axios.delete("/api/user/" + id);
   },
   confirmuser: function(userInfo) {
-    return axios.post("/api/user/signin", userInfo)
+    return axios.post("/api/user/login", userInfo)
   },
   // Saves a user to the database
   saveuser: function(userData) {
-    return axios.post("/api/user/signup", userData);
+    return axios.post("/api/user/register", userData);
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {
