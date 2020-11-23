@@ -14,9 +14,9 @@ export default {
   deleteuser: function(id) {
     return axios.delete("/api/user/" + id);
   },
-  confirmuser: function(userInfo) {
-    return axios.post("/api/user/login", userInfo)
-  },
+  // confirmuser: function(userInfo) {
+  //   return axios.post("/api/user/login", userInfo)
+  // },
   validateUser: function(token){
     return axios.post("/api/user/validate", {token})
   },
