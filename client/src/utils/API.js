@@ -8,7 +8,6 @@ export default {
     return axios.get("/api/user/" + username);
   },
   getUserbyId: function(id) {
-    console.log(id)
     return axios.get("/api/inventory/user/" + id)
   },
   // Deletes the user with the given id
@@ -35,6 +34,8 @@ export default {
   },
 
   updateInventory: function(id, inventoryData) {
+    console.log("id", id)
+    console.log("body", inventoryData)
     return axios.put("/api/inventory/" + id + "/update", inventoryData)
   }
 };

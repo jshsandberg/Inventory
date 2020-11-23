@@ -41,7 +41,7 @@ function SignUp() {
       industry: values.industry
     })
       .then((res) => {
-        if( res.status == 200 ){
+        if( res.status === 200 ){
           history.push("/inventory")
         }
     })
