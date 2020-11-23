@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Welcome from "./pages/Welcome";
@@ -7,9 +7,25 @@ import SignIn from "./pages/SignIn";
 import Admin from "./pages/Admin";
 import Contact from "./pages/Contact.js";
 import Inventory from "./pages/Inventory";
-import InventoryFill from "./pages/InventoryFill"
+import InventoryFill from "./pages/InventoryFill";
+import API from './utils/API'
 
 function App() {
+  const [user, setUser] = useState(null);
+  useEffect(()=> {
+    if(localStorage.getItem("jwt")){
+      const token = localStorage.getItem("jwt");
+      console.log(token)
+      API.validateUser(token)
+      .then(({data}) => {
+        console.log("YOUR USER ", data)
+        setUser(data)
+      })
+      .catch(err => console.log(err))
+    }else{
+      //optional - redirect logic here if no token
+    }
+  }, [])
   return (
 
     <Router>

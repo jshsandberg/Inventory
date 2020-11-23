@@ -7,6 +7,10 @@ router.route("/")
   // .get(inventController.findAll)
    .post(inventController.create);
 
+router
+  .route("/:id")
+  .get(inventController.findById)
+
 // Matches with "/api/inventory/:id" and puts inventory in
 router
   .route("/:id/update")

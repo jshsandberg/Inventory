@@ -15,7 +15,7 @@ passport.use(new LocalStrategy(
   function(username, password, done) {
       console.log("authenticating...");
  
-    db.User.findOne({username}).then(function(dbUser) {
+    db.User.findOne({username}).then(async function(dbUser) {
       console.log(dbUser)
       if (!dbUser) {
         console.log('no User')
@@ -24,27 +24,32 @@ passport.use(new LocalStrategy(
         });
       }
  
-      else if (password != null){
-        bcrypt.compare(password, dbUser.password).then(function(result) {
-        console.log(result);
-          if (result === false) {
+      // else if (password != null){
+      //   bcrypt.compare(password, dbUser.password).then(function(result) {
+      //   console.log(result);
+      //     if (result === false) {
             
-            console.log("incorrect")
-            return done(null, false, {
-              message: "Incorrect password"
-            }) 
-          } else {
-            return done(null, dbUser)
-          }
-        }
-      )}
-      else {
-        
-        console.log('it works')
-    
+      //       console.log("incorrect")
+      //       return done(null, false, {
+      //         message: "Incorrect password"
+      //       }) 
+      //     } else {
+      //       return done(null, dbUser)
+      //     }
+      //   }
+      // )}
+
+      //
+      const passwordCorrect = await dbUser.comparePassword(password);
+      if(!passwordCorrect){
+        return done(null, false, "Incorrect Password")
+      }else {
+        return done(null, dbUser);
       }
       
-    }).catch(err => console.log(err));
+    }).catch(err => {
+      err.send("there was an error")
+    });
   }
 ));
 
