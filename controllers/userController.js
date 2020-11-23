@@ -1,78 +1,124 @@
 const db = require("../models");
-const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
-// Defining methods for the userController
+
 module.exports = {
-  find:function(req, res) {
-    //console.log(req.body)
-    db.User
-      .find({username: req.params.username})
-      .then(dbModel=> {
-        res.json(dbModel);
-        //console.log(req.params.username);
-      })
-      .catch(err => res.status(422).json(err));
+  getUser: async (req, res) => {
+    const user =  await db.User.findById(req.user);
+    res.json({ 
+      id: user._id,
+      username: user.username, 
+    });
   },
-  findById: function(req, res) {
-    console.log(req.params)
-    db.User
-      .findById(req.params.id)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
+  register: async (req, res) => {
+    try {
+      let { name, email, username, password } = req.body;
+  
+      // validate
+  
+      if (!name || !email || !username || !password) {
+        return res.status(400).json({ msg: "Not all fields have been entered." });
+      }
+  
+      if (password.length < 5) {
+        return res
+          .status(400)
+          .json({ msg: "The password needs to be at least 5 characters long." });
+      }
+  
+      const existingUser = await db.User.findOne({ username });
+      if (existingUser) {
+        return res.status(400).json({ msg: "An account with this username has already been created"});
+      }
+  
+      const existingEmail = await db.User.findOne({ email });
+      if (existingEmail) {
+        return res.status(400).json({ msg: "An account with this email has already been created"});
+      }
+  
+      const salt = await bcrypt.genSalt();
+      const passwordHash = await bcrypt.hash(password, salt);
+      // console.log(passwordHash);
+  
+      const newUser = new db.User({
+        name,
+        email,
+        username,
+        password: passwordHash
+      });
+      const savedUser = await newUser.save();
+      res.json(savedUser);
+  
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
   },
-  create: function(req, res) {
-    // let newUser = new User({
-    //   username: req.body.username,
-    //   password: req.body.password
-    // });
-    // newUser.save((err,user)=>{
-    //   if(err){throw err;}
-    //   res.json(user);
-    // });
-    db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  update: function(req, res) {
-    db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-  // find:function(req, res) { 
-  //   db.User
-  //     .find({username: req.params.username})
-  //     .then((req)=>{
-  //       // if(!req.body.username){ 
-  //       //   res.json({success: false, message: "Username was not given"}) 
-  //       // } else { 
-  //       //   if(!req.body.password){ 
-  //       //     res.json({success: false, message: "Password was not given"}) 
-  //       //   }else{ 
-  //       //     passport.authenticate('local', function (err, user, info) {  
-  //       //        if(err){ 
-  //       //          res.json({success: false, message: err}) 
-  //       //        } else{ 
-  //       //         if (! user) { 
-  //       //           res.json({success: false, message: 'username or password incorrect'}) 
-  //       //         } else{ 
-  //       //           req.login(user, function(err){ 
-  //       //             if(err){ 
-  //       //               res.json({success: false, message: err}) 
-  //       //             }else{ 
-  //       //               const token =  jwt.sign({userId : user._id, username:user.username}, secretkey, {expiresIn: '24h'}) 
-  //       //               res.json({success:true, message:"Authentication successful", token: token }); 
-  //       //             } 
-  //       //           }) 
-  //       //         } 
-  //       //        } 
-  //       //     })(req, res); 
-  //       //   } 
-  //       // } 
-  //     }).catch(err => res.status(422).json(err));
-   
-  // }
-    
+  login: async (req, res) => {
+    try {
+      const { username, password } =req.body;
 
-};
+      // validate
+      if (!username || !password) {
+        return res.status(400).json({ msg: "Not all fields have been entered." });
+      }
+
+      const user = await db.User.findOne({ username });
+      if (!user) {
+        return res
+          .status(400)
+          .json({ msg: "Username does not exist!"});
+      }
+
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res
+          .status(400)
+          .json({ msg: "Invalid password!"});
+      }
+
+      const token =jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      res.json({
+        token, 
+        user: {
+          id: user._id,
+          name: user.name,
+          username: user.username
+        }
+      })
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+  valid: async (req, res) => {
+    try{
+      const token = req.header("x-auth-token");
+      if (!token) {
+        return res.json(false);
+      }
+
+      const verified = jwt.verify(token, process.env.JWT_SECRET);
+      if (!verified) {
+        return res.json(false);
+      }
+
+      const user = await db.User.findById(verified.id);
+      if (!user) {
+        return res.josn(false);
+      }
+
+      return res.json(true);
+
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+  delete: async (req, res) => {
+    try {
+      const deletedUser = await db.User.findByIdAndDelete(req.user);
+      res.json(deletedUser);
+    } catch (err) {
+      res.status(500).json({ error: err.message });
+    }
+  },
+}

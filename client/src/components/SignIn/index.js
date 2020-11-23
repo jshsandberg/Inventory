@@ -4,9 +4,6 @@ import {useHistory, Link} from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 import API from "../../utils/API";
-import Inventory from "../Inventory/Inventory"
-const LocalStrategy = require("passport-local").Strategy;
-const passport = require("passport");
 
 function SignIn () {
 
@@ -19,7 +16,9 @@ function SignIn () {
 
 
   let history = useHistory();
-  const [formObject, setFormObject] = useState({})
+
+  const [formObject, setFormObject] = useState({});
+
   function handleInputChange(event) {
     event.preventDefault();
     const { name, value } = event.target;

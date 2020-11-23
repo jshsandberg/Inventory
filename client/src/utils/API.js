@@ -14,15 +14,19 @@ export default {
   deleteuser: function(id) {
     return axios.delete("/api/user/" + id);
   },
-  signIn: function(userInfo) {
-    return axios.post("/api/user/signin", userInfo)
+  confirmuser: function(userInfo) {
+    return axios.post("/api/user/login", userInfo)
   },
   validateUser: function(token){
     return axios.post("/api/user/validate", {token})
   },
   // Saves a user to the database
-  saveuser: function(userData) {
-    return axios.post("/api/user/signup", userData);
+  saveUser: function(userData) {
+    return axios.post("/api/user/register", userData);
+  },
+  // login user
+  loginUser: function(loginData) {
+    return axios.post("/api/user/login", loginData);
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {
