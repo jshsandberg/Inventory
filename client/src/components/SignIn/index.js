@@ -1,45 +1,41 @@
-import React from "react";
-import {useState} from "react";
-import {useHistory, Link} from "react-router-dom";
-import axios from "axios";
+import React, { useState, useContext }  from "react";
+import { useHistory } from "react-router-dom";
+import UserContext from "../../context/userContext";
 import "./style.css";
 import API from "../../utils/API";
 
+
 function SignIn () {
+  // const [userCode, setUserCode] = useState("")
+  const [values, setValues] = useState({});
+  const { user, setUser } = useContext(UserContext);
 
-
- 
- 
-  const [userCode, setUserCode] = useState("")
-
+  const history = useHistory();
   
-
-
-  let history = useHistory();
-
-  const [formObject, setFormObject] = useState({});
-
   function handleInputChange(event) {
-    event.preventDefault();
+    event.persist();
     const { name, value } = event.target;
-    setFormObject({ ...formObject, [name]: value })
+    setValues({ ...values, [name]: value })
   };
-  //console.log(formObject.username);
-  function handleFormSubmit(event) {
+
+  async function handleFormSubmit(event) {
     event.preventDefault();
-        API.signIn(
-          {
-          username: formObject.username,
-          password: formObject.password
-          },
-        ).then(({data}) => {
-            console.log("got the user! ", data);
-            localStorage.setItem("jwt", data.token);
-            history.push('/inventory/user/' + data._id)
-          })
-          .catch(err => {
-            setUserCode(null)
-            })      
+    console.log("sumbitting login data")
+    const loginUser = {
+      username: values.username,
+      password: values.password,
+    };
+    const loginRes = await API.loginUser({
+      username: loginUser.username,
+      password: loginUser.password
+    });
+    setUser({
+      token: loginRes.data.token,
+      user: loginRes.data.user
+    });
+    console.log(user);
+    localStorage.setItem("auth-token", loginRes.data.token);
+    history.push("/inventory");     
   }
 
 
@@ -57,7 +53,7 @@ function SignIn () {
               <div className="form-group">
                 <label for="inputPassword" className="sr-only">Password</label>
                 <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
-                {userCode ?? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Login failed</small>}
+                {/* {userCode ?? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Login failed</small>} */}
               </div>
               <div className="checkbox mb-3">
                 <label>

@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
+import UserContext from "../../context/userContext";
 import "./style.css";
 import { Link } from "react-router-dom";
 
 function NavBar(props) {
+
+    const { user, setUser } = useContext(UserContext);
+    const logout = () => {
+        setUser({
+            token: undefined,
+            user: undefined,
+        });
+        localStorage.setItem("auth-token", "");
+    };
+
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="d-flex flex-grow-1">
@@ -26,7 +38,7 @@ function NavBar(props) {
                     </li>
                 </ul>
                 <Link to="/signin" className="nav-link">
-                    <button type="button" id="get-started-button">Logout <i className="fa fa-sign-out" aria-hidden="true"></i></button>
+                    <button type="button" id="get-started-button" onClick={logout}>Logout <i className="fa fa-sign-out" aria-hidden="true"></i></button>
                 </Link>
             </div>
         </nav>
