@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import "./style.css"
 
 function InventoryForm() {
+
+    let id  = useParams();
+    console.log(id.id)
 
     const [inventoryObject, setInventoryObject] = useState({});
     const [isSuccessful, setIsSuccessful] = useState(false);
@@ -32,7 +35,7 @@ function InventoryForm() {
             cost: inventoryObject.cost,
             value: inventoryObject.value,
             sold: inventoryObject.sold,
-            userId: "5fb9d081658f8c4ac4f391c6"
+            userId: id.id
         }
         // , userCode
         ).then(res => {
