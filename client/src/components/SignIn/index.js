@@ -1,6 +1,6 @@
 import React from "react";
 import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 import API from "../../utils/API";
@@ -11,46 +11,11 @@ const passport = require("passport");
 function SignIn () {
 
 
-  // Experiment IT WORKS BUT YOU CAN NOT SIGN IN WITH THE RIGHT PASSWORD, THEN SIGN AGAIN WITH A WRONG PASSWORD AND THEN SIGN IN WITH THE RIGHT PASSWORD
-  const [isAuthorized, setIsAuthorized] = useState(null)
+ 
+ 
   const [userCode, setUserCode] = useState("")
 
-  // const UNAUTHORIZED = 401;
-  // axios.interceptors.response.use(
-  //   response => response,
-  //   error => {
-  //     const {status} = error.response;
-  //     if (status === UNAUTHORIZED) {
-  //       setIsAuthorized(false);
-  //     } else 
-  //     return Promise.reject(error);
-  //  }
-  // );
-
-  //console.log(userCode)
-
   
-
-  // const [formObject, setFormObject] = useState({})
-  // const [authenticateSuccess, setAuthenticateSuccess] = useState(false);
-
-  // const signin = e => {
-  //   e.preventDefault();
-  //   console.log(formObject);
-  //   API.getUser({
-  //     username: formObject.username,
-  //     password: formObject.password
-  //   }).then(res => {
-  //       //console.log(res)
-  //       //Once we get it figured out how do we authenticate this?
-  //       this.password===API.getUser.password ? setAuthenticateSuccess(true) : console.log("Wrong password")  
-  //       // How to remove inputs without reloading
-  //       //window.location.reload()
-  //   })
-  //     .catch(err => console.log(err))
-
-  //     console.log(authenticateSuccess);
-  // }
 
 
   let history = useHistory();
@@ -63,46 +28,21 @@ function SignIn () {
   //console.log(formObject.username);
   function handleFormSubmit(event) {
     event.preventDefault();
-    setUserCode(null)
-    //console.log(formObject)
-    // API.getuser(
-    //   formObject.username)
-    //   .then((res) => {
-    //     // console.log(res.data[0]._id)
-    //     //console.log(res.data)
-    //     setUserCode(res.data[0]._id)
-    //     // console.log(res.status)
         API.signIn(
           {
           username: formObject.username,
           password: formObject.password
           },
-          //res.data[0].password
-          )
-          .then(({data}) => {
-            //   API.getuser(formObject.username).then(res => {
-            //     console.log(res);
-            //   setUserCode(res.data[0]._id)
-            //   })
-            // } else {  
-            //   console.log("hmmmm")
-            //   setUserCode(null)
-          
-            // }
-            //console.log(isAuthorized)
+        ).then(({data}) => {
             console.log("got the user! ", data);
             localStorage.setItem("jwt", data.token);
-
-          }
-          )
+            history.push('/inventory/user/' + data._id)
+          })
           .catch(err => {
             setUserCode(null)
-            })
-          
-       //history.push("/inventory")
-      
+            })      
   }
-  console.log(isAuthorized)
+
 
   return (
     <div>

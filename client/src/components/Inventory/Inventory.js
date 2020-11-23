@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import Shipment from "../Shipment/index"
 
 //API methods
@@ -63,6 +64,14 @@ const Modal = (props) => {
 
 function InventoryItems() {
 
+    // let userId = this.props.match.params.id
+    // console.log(userId)
+
+
+
+
+    
+
   const [item, setItem] = useState({})
   const [inventoryState, setInventoryState] = useState([]);
   const [inventoryStateBeforeRender, setInventoryStateBeforeRender] = useState([]);
@@ -70,22 +79,24 @@ function InventoryItems() {
   const [userCode, setUserCode] = useState("5fb6e9c7439e183e44657964")
 
   useEffect(() => {
+      
     beforeMount();
     setInventoryState(inventoryStateBeforeRender)
     //console.log(inventoryState)
     // eslint-disable-next-line react-hooks/exhaustive-deps    
     }, [rerender]);
 
-
+    let id = useParams()
     //console.log(inventoryState)
 
     const beforeMount = () => {
-        API.getuser("jsandberg").then(res => {
+        API.getUserbyId(id.id).then(res => {
+            console.log(res.data.inventory)
 
             const inventoryArr = []
        
-            for (let i = 0; i < res.data[0].inventory.length; i++){
-                API.getInventory(res.data[0].inventory[i])
+            for (let i = 0; i < res.data.inventory.length; i++){
+                API.getInventory(res.data.inventory[i])
                 .then(res => {
                     inventoryArr.push(res.data)
               
@@ -95,16 +106,21 @@ function InventoryItems() {
              }
             setInventoryStateBeforeRender(inventoryArr)
 
-            setUserCode(res.data[0]._id)
+            //setUserCode(res.data[0]._id)
     })
 }
 
+
+//console.log(id.id)
     
+// const findTheId= () => {
+//     //console.log(id.id)
+//     API.getUserbyId(id.id).then(res => console.log(res)).catch(err => console.log(err));
+//   //console.log(date.addDays(5).getMonth())
+//   //console.log(date.addDays(5).getDate())
+// }
 
-  //console.log(date.addDays(5).getMonth())
-  //console.log(date.addDays(5).getDate())
-
-
+// findTheId()
 
   const updateInventory = (newItem, i) => {
     API.updateInventory(newItem._id, newItem)

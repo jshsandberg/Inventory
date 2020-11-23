@@ -22,9 +22,12 @@ router
 //   res.json(req.user)
 // }); 
 
+router
+  .route("/:id")
+  .get(userController.findById, () => console.log("I am here"))
 
 router.post('/signin', passport.authenticate("local"), (req,res)=> {
-  console.log("it works");
+  //console.log("it works");
   const token = jwt.sign({
     exp: Math.floor(Date.now() / 1000) + (expiresIn),
     data: req.user._id
@@ -35,18 +38,18 @@ router.post('/signin', passport.authenticate("local"), (req,res)=> {
 }); 
 
 router.post("/validate", ({body:{token}},res)=> {
-  console.log(token)
+  //console.log(token)
   const decoded = jwt.decode(token, process.env.JWTSECRET || "");
-  console.log(decoded);
+  //console.log(decoded);
 
   //checking to see if token expired
   if(+decoded.exp < (Date.now() / 1000)){
-    console.log("no good!")
+    //console.log("no good!")
     res.status(401).json({message: "Token expired, please log in again!"})
   }else{
     //gets user data from db if token is good
     db.User.findById(decoded.data).then(user => {
-      console.log(user);
+      //console.log(user);
       res.json(user)
     })
   }
