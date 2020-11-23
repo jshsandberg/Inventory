@@ -22,8 +22,12 @@ export default {
     return axios.post("/api/user/validate", {token})
   },
   // Saves a user to the database
-  saveuser: function(userData) {
+  saveUser: function(userData) {
     return axios.post("/api/user/register", userData);
+  },
+  // login user
+  loginUser: function(loginData) {
+    return axios.post("/api/user/login", loginData);
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {

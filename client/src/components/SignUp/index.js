@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext, } from "react";
+import { useHistory } from "react-router-dom";
 import "./style.css";
 import API from '../../utils/API';
+import UserContext from "../../context/userContext";
 // import validate from "../FormValidation/SignUpFormRules";
 
 // import background from "../../assets/pexels-tiger-lily-4481323.jpg"
@@ -8,18 +10,7 @@ import API from '../../utils/API';
 function SignUp() {
   const history = useHistory();
   const [values, setValues] = useState({});
-  // const [errors, setErrors] = useState({});
-  // const [isSubmitting, setIsSubmitting] = useState(false);
-
-  // useEffect(() => {
-  //   if (Object.keys(errors).length === 0 && isSubmitting) {
-  //     signInCheck();
-  //   }
-  // }, [errors]);
-
-  // function signInCheck() {
-  //   console.log("No errors, continuing to save...");
-  // }
+  const { user, setUser } = useContext(UserContext);
 
   function handleChange(event) {
     event.persist();
@@ -27,11 +18,11 @@ function SignUp() {
     setValues({ ...values, [name]: value })
   };
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     // setErrors(validate(values));
     // setIsSubmitting(true);
-    API.saveuser({
+    const newUser = {
       name: values.firstName + " " + values.lastName,
       email: values.email,
       phone: values.phone,
@@ -39,13 +30,19 @@ function SignUp() {
       username: values.username,
       password: values.password,
       industry: values.industry
-    })
-      .then((res) => {
-        if( res.status == 200 ){
-          history.push("/inventory")
-        }
-    })
-      .catch(err => console.log(err));
+    }
+    await API.saveUser(newUser);
+    const loginRes = await API.loginUser({
+      username: newUser.username,
+      password: newUser.password
+    });
+    setUser({
+      token: loginRes.data.token,
+      user: loginRes.data.user
+    });
+    console.log(user);
+    localStorage.setItem("auth-token", loginRes.data.token);
+    history.push("/inventory/user/" + user.id);
   };
 
   return (
