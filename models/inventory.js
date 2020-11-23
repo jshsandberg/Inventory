@@ -33,7 +33,8 @@ const inventSchema = new Schema({
   cycle: String,
   cost: String,
   value: String,
-  sold: String
+  sold: String,
+  userId: String
 });
 
 const Inventory = mongoose.model("Inventory", inventSchema);

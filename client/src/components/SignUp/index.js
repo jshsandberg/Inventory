@@ -6,7 +6,7 @@ import API from '../../utils/API';
 // import background from "../../assets/pexels-tiger-lily-4481323.jpg"
 
 function SignUp() {
-
+  const history = useHistory();
   const [values, setValues] = useState({});
   // const [errors, setErrors] = useState({});
   // const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,7 +40,11 @@ function SignUp() {
       password: values.password,
       industry: values.industry
     })
-      .then(res => console.log(res.config.data))
+      .then((res) => {
+        if( res.status == 200 ){
+          history.push("/inventory")
+        }
+    })
       .catch(err => console.log(err));
   };
 
@@ -82,7 +86,7 @@ function SignUp() {
                 {/* <label for="inputEmail">Email</label> */}
 
                 <input 
-                  type="text" 
+                  type="email" 
                   className="form-control" 
                   name="email" 
                   onChange={handleChange} 
@@ -92,7 +96,7 @@ function SignUp() {
               <div className="form-group col-md-6">
                 {/* <label for="inputEmail">Phone</label> */}
                 <input 
-                  type="text" 
+                  type="number" 
                   className="form-control" 
                   name="phone" 
                   onChange={handleChange} 

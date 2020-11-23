@@ -1,47 +1,18 @@
 import React from "react";
 import {useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useHistory, Link} from "react-router-dom";
 import axios from "axios";
 import "./style.css";
 import API from "../../utils/API";
 
 function SignIn () {
 
-  const UNAUTHORIZED = 401;
-  axios.interceptors.response.use(
-    response => response,
-    error => {
-      const {status} = error.response;
-      if (status === UNAUTHORIZED) {
-       console.log("UNAUTHORIZED");
-      }
-      return Promise.reject(error);
-   }
-  );
 
+ 
+ 
+  const [userCode, setUserCode] = useState("")
 
   
-
-  // const [formObject, setFormObject] = useState({})
-  // const [authenticateSuccess, setAuthenticateSuccess] = useState(false);
-
-  // const signin = e => {
-  //   e.preventDefault();
-  //   console.log(formObject);
-  //   API.getUser({
-  //     username: formObject.username,
-  //     password: formObject.password
-  //   }).then(res => {
-  //       //console.log(res)
-  //       //Once we get it figured out how do we authenticate this?
-  //       this.password===API.getUser.password ? setAuthenticateSuccess(true) : console.log("Wrong password")  
-  //       // How to remove inputs without reloading
-  //       //window.location.reload()
-  //   })
-  //     .catch(err => console.log(err))
-
-  //     console.log(authenticateSuccess);
-  // }
 
 
   let history = useHistory();
@@ -53,50 +24,49 @@ function SignIn () {
     const { name, value } = event.target;
     setFormObject({ ...formObject, [name]: value })
   };
-
+  //console.log(formObject.username);
   function handleFormSubmit(event) {
     event.preventDefault();
-    console.log(formObject)
-    API.getuser(
-      formObject.username)
-      .then((res) => {
-        console.log(res.data[0]._id)
-        console.log(res.data)
-        console.log(res.status)
-        API.confirmuser(
+        API.signIn(
           {
           username: formObject.username,
           password: formObject.password
           },
-          //res.data[0].password
-          )
-          .catch(err => console.log(err))
-          
-       //history.push("/inventory")
-      })
+        ).then(({data}) => {
+            console.log("got the user! ", data);
+            localStorage.setItem("jwt", data.token);
+            history.push('/inventory/user/' + data._id)
+          })
+          .catch(err => {
+            setUserCode(null)
+            })      
   }
 
+
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <form className="form-signin" onSubmit={handleFormSubmit}>
-            <h1 className="h3 mb-3">Please sign in...</h1>
-            <div className="form-group">
-            <label for="inputEmail" className="sr-only">Email Address</label>
-            <input name="username" onChange={handleInputChange} type="" id="inputEmail" className="form-control" placeholder="Email address" required autofocus />
-            </div>
-            <div className="form-group">
-              <label for="inputPassword" className="sr-only">Password</label>
-              <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
-            </div>
-            <div className="checkbox mb-3">
-              <label>
-                <input type="checkbox" value="remember-me" /> Remember me
-              </label>
-            </div>
-            <button className="inverted" id="signup-login-btn" type="submit">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></button>
-          </form>
+    <div>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <form className="form-signin" onSubmit={handleFormSubmit}>
+              <h1 className="h3 mb-3">Please sign in...</h1>
+              <div className="form-group">
+              <label for="inputEmail" className="sr-only">Email Address</label>
+              <input name="username" onChange={handleInputChange} type="" id="inputEmail" className="form-control" placeholder="Email address" required autofocus />
+              </div>
+              <div className="form-group">
+                <label for="inputPassword" className="sr-only">Password</label>
+                <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+                {userCode ?? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Login failed</small>}
+              </div>
+              <div className="checkbox mb-3">
+                <label>
+                  <input type="checkbox" value="remember-me" /> Remember me
+                </label>
+              </div>
+              <button className="inverted" id="signup-login-btn" type="submit">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

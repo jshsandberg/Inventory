@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from 'react-router-dom';
 import Shipment from "../Shipment/index"
 
 //API methods
 import API from "../../utils/API";
 
 import "./style.css"
+
+
 
 const Modal = (props) => {
 
@@ -33,20 +36,20 @@ const Modal = (props) => {
             <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title" id="exampleModalLabel">
-                        Choose what to update:
+                        Choose what to update: {item.name}
                     </h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div className="modal-body">
-                    <input onChange={handleInputChange} name="item" value={input.item} placeholder={item.item}></input>
+                    <p>Unit Price: $ </p><input onChange={handleInputChange} name="cost" value={input.cost} placeholder={item.cost}></input>
                     <br></br>
                     <br></br>
-                    <input onChange={handleInputChange} name="dateAdded" value={input.dateAdded} placeholder={item.dateAdded}></input>
+                    <p>Shipment Dates: </p><input onChange={handleInputChange} name="dateAdded" value={input.dateAdded} placeholder={item.dateAdded}></input>
                     <br></br>
                     <br></br>
-                    <input onChange={handleInputChange} name="quantity" value={input.quantity} placeholder={item.quantity}></input>
+                    <p>In Stock: </p><input onChange={handleInputChange} name="quantity" value={input.quantity} placeholder={item.quantity}></input>
                 </div>
                 <div className="modal-footer">
                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -61,27 +64,67 @@ const Modal = (props) => {
 
 function InventoryItems() {
 
+    // let userId = this.props.match.params.id
+    // console.log(userId)
+
+
+
+
+    
+
   const [item, setItem] = useState({})
-  const [inventoryState, setInventoryState] = useState({ inventory: [] });
+  const [inventoryState, setInventoryState] = useState([]);
+  const [inventoryStateBeforeRender, setInventoryStateBeforeRender] = useState([]);
+  const [rerender, setRerender] = useState(false)
+  const [userCode, setUserCode] = useState("5fb6e9c7439e183e44657964")
 
   useEffect(() => {
-    API.getInventory()
-      .then(data => setInventoryState(data))
-  }, []);
+      
+    beforeMount();
+    setInventoryState(inventoryStateBeforeRender)
+    //console.log(inventoryState)
+    // eslint-disable-next-line react-hooks/exhaustive-deps    
+    }, [rerender]);
+
+    let id = useParams()
+    //console.log(inventoryState)
+
+    const beforeMount = () => {
+        API.getUserbyId(id.id).then(res => {
+            console.log(res.data.inventory)
+
+            const inventoryArr = []
+       
+            for (let i = 0; i < res.data.inventory.length; i++){
+                API.getInventory(res.data.inventory[i])
+                .then(res => {
+                    inventoryArr.push(res.data)
+              
+                    setRerender(true)
+                    //console.log(inventoryArr)
+                 })
+             }
+            setInventoryStateBeforeRender(inventoryArr)
+
+            //setUserCode(res.data[0]._id)
+    })
+}
 
 
- 
+//console.log(id.id)
+    
+// const findTheId= () => {
+//     //console.log(id.id)
+//     API.getUserbyId(id.id).then(res => console.log(res)).catch(err => console.log(err));
+//   //console.log(date.addDays(5).getMonth())
+//   //console.log(date.addDays(5).getDate())
+// }
 
-
-  //console.log(date.addDays(5).getMonth())
-  //console.log(date.addDays(5).getDate())
-
-
+// findTheId()
 
   const updateInventory = (newItem, i) => {
-    const newInv = [...inventoryState.inventory];
-    newInv[i] = newItem;
-    setInventoryState({inventory:newInv})
+    API.updateInventory(newItem._id, newItem)
+    .then(res => console.log(res))
   }
 
     return (
@@ -93,20 +136,22 @@ function InventoryItems() {
                     <thead>
                         <tr>
                             <th scope="col" width="10%">#</th>
-                            <th scope="col" width="45%">Item Name</th>
-                            <th scope="col" width="15%">Date Added</th>
-                            <th scope="col" width="10%">Quantity</th>
+                            <th scope="col" width="30%">Item Name</th>
+                            <th scope="col" width="10%">Unit Price</th>
+                            <th scope="col" width="10%">Date Added</th>
+                            <th scope="col" width="10%">In Stock</th>
                             <th scope="col" width="10%">Update</th>
                             <th scope="col" width="10%">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {inventoryState.inventory.map((item, i) => {
+                        {inventoryState.map((item, i) => {
                             return (
                             <>
                                 <tr>
                                     <th scope="row"></th>
-                                        <td>{item.item}</td>
+                                        <td>{item.name}</td>
+                                        <td>$ {item.cost}</td>
                                         <td>{item.dateAdded}</td>
                                         {item.quantity < 5 ? <td id="qty-col" style={{ backgroundColor: "#ff000052" }}>{item.quantity}</td> : <td id="qty-col">{item.quantity}</td>}
                                         <td>

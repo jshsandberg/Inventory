@@ -7,6 +7,7 @@ function InventoryForm() {
 
     const [inventoryObject, setInventoryObject] = useState({});
     const [isSuccessful, setIsSuccessful] = useState(false);
+    //const [userCode, setUserCode] = useState("5fb6e9c7439e183e44657964")
 
 
     const sectionStyle = {
@@ -30,8 +31,11 @@ function InventoryForm() {
             cycle: inventoryObject.cycle,
             cost: inventoryObject.cost,
             value: inventoryObject.value,
-            sold: inventoryObject.sold
-        }).then(res => {
+            sold: inventoryObject.sold,
+            userId: "5fb9d081658f8c4ac4f391c6"
+        }
+        // , userCode
+        ).then(res => {
             console.log(res)
            res.status === 200 ? setIsSuccessful(true) : console.log("it didnt work")    
             // How to remove inputs without reloading

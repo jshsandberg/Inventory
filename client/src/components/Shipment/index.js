@@ -1,16 +1,7 @@
-import React, { useState, useEffect } from "react"
-import API from "../../utils/API"
+import React from "react"
 
 
-function Shipment() {
-    
-
-    const [shipment, setShipment] = useState({ inventory: [] });
-
-    useEffect(() => {
-        API.getInventory()
-          .then(data => setShipment(data))
-      }, []);
+function Shipment(props) {
 
     const findDate = (days) => {
 
@@ -54,27 +45,30 @@ function Shipment() {
           <div className="row">
             <div className="col-3">
               <div className="list-group" id="list-tab" role="tablist">
-                {shipment.inventory.map((info, i) => {
-                    console.log(info)
+                {props.shipment.map((info, i) => {
+                    //console.log(info)
                   return (
-                    <a className="list-group-item list-group-item-action" id={`list-${info.item}-list`} data-toggle="list" href={`#list-${info.item}`} role="tab" aria-controls={info.item}>{info.item}</a>
+                    <a className="list-group-item list-group-item-action" id={`list-${info.name}-list`} data-toggle="list" href={`#list-${info.name}`} role="tab" aria-controls={info.name}>{info.name}</a>
                   )
                 })}
               </div>
             </div>
             <div style={{textAlign: "center"}} className="col-9">
               <div className="tab-content" id="nav-tabContent">
-                {shipment.inventory.map((shipment, i) => {
+                {props.shipment.map((shipment, i) => {
+                  //console.log(shipment)
                   return (
-                      <div className="tab-pane fade show" id={`list-${shipment.item}`} role="tabpanel" aria-labelledby={`list-${shipment.item}-list`}>
+               
+                      <div className="tab-pane fade show" id={`list-${shipment.name}`} role="tabpanel" aria-labelledby={`list-${shipment.name}-list`}>
                         <p>Last Bought: {shipment.dateAdded}</p>
-                        <p>Day Inventory will be Arriving: {findDate(shipment.cycle[1].every)}</p>
-                        <p>Unit Price: {shipment.sale.unitPrice}</p>
-                        <p>Sale Price: {shipment.sale.salePrice}</p>
-                        <p>Units Sold: {shipment.sale.unitsSold}</p>
-                        <p>Net Gain: {((shipment.sale.salePrice) - (shipment.sale.unitPrice)) * (shipment.sale.unitsSold)}</p>
-                        <p>Profit Margin: {(Math.floor(((shipment.sale.salePrice) - (shipment.sale.unitPrice)) / (shipment.sale.unitsSold) * 100))} %</p>
+                        <p>Day Inventory will be Arriving: {findDate(shipment.cycle)}</p>
+                        <p>Unit Price: ${shipment.cost}</p>
+                        <p>Sale Price: ${shipment.value}</p>
+                        <p>Units Sold: {shipment.sold}</p>
+                        <p>Net Gain: ${((shipment.value) - (shipment.cost)) * (shipment.sold)}</p>
+                        <p>Profit Margin: {(Math.floor(((shipment.value) - (shipment.cost)) / (shipment.sold) * 100))} %</p>
                       </div>
+             
                   )
                 })}
 

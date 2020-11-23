@@ -7,6 +7,10 @@ export default {
   getuser: function(username) {
     return axios.get("/api/user/" + username);
   },
+  getUserbyId: function(id) {
+    console.log(id)
+    return axios.get("/api/inventory/user/" + id)
+  },
   // Deletes the user with the given id
   deleteuser: function(id) {
     return axios.delete("/api/user/" + id);
@@ -14,16 +18,23 @@ export default {
   confirmuser: function(userInfo) {
     return axios.post("/api/user/login", userInfo)
   },
+  validateUser: function(token){
+    return axios.post("/api/user/validate", {token})
+  },
   // Saves a user to the database
   saveuser: function(userData) {
     return axios.post("/api/user/register", userData);
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {
-    console.log("axios: " + inventoryData)
     return axios.post("/api/inventory", inventoryData)
   },
-  getInventory: function(){
-    return new Promise((resolve,reject)=> resolve(inventory))
+  
+  getInventory: function(id) {
+    return axios.get("/api/inventory/" + id)
+  },
+
+  updateInventory: function(id, inventoryData) {
+    return axios.put("/api/inventory/" + id + "/update", inventoryData)
   }
 };

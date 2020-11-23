@@ -24,12 +24,21 @@
   "dependencies": {
     "axios": "^0.21.0",
     "bcrypt": "^5.0.0",
+<<<<<<< HEAD
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+=======
+    "cookie-parser": "^1.4.5",
+>>>>>>> 51ec3eca6280fe5712df202cb142fd0435377808
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.3.16",
+<<<<<<< HEAD
+=======
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+>>>>>>> 51ec3eca6280fe5712df202cb142fd0435377808
     "passport-local-mongoose": "^6.0.1",
     "path": "^0.12.7",
     "react-gauge-chart": "^0.2.5",
