@@ -13,7 +13,7 @@ function SignIn () {
 
   // Experiment IT WORKS BUT YOU CAN NOT SIGN IN WITH THE RIGHT PASSWORD, THEN SIGN AGAIN WITH A WRONG PASSWORD AND THEN SIGN IN WITH THE RIGHT PASSWORD
   const [isAuthorized, setIsAuthorized] = useState(null)
-  const [userCode, setUserCode] = useState()
+  const [userCode, setUserCode] = useState("")
 
   // const UNAUTHORIZED = 401;
   // axios.interceptors.response.use(
@@ -72,30 +72,32 @@ function SignIn () {
     //     //console.log(res.data)
     //     setUserCode(res.data[0]._id)
     //     // console.log(res.status)
-        API.confirmuser(
+        API.signIn(
           {
           username: formObject.username,
           password: formObject.password
           },
           //res.data[0].password
           )
-          .then(async response => {
-            const data = await response;
-             if (data.status === 200) {
-              //  try to gigure out how to get the suer code ffrom the response
-              API.getuser(formObject.username).then(res => {
-                console.log(res);
-              setUserCode(res.data[0]._id)
-              })
-            } else {  
-              console.log("hmmmm")
-              setUserCode(null)
+          .then(({data}) => {
+            //   API.getuser(formObject.username).then(res => {
+            //     console.log(res);
+            //   setUserCode(res.data[0]._id)
+            //   })
+            // } else {  
+            //   console.log("hmmmm")
+            //   setUserCode(null)
           
-            }
+            // }
             //console.log(isAuthorized)
+            console.log("got the user! ", data);
+            localStorage.setItem("jwt", data.token);
+
           }
           )
-          .catch(err => console.log(err))
+          .catch(err => {
+            setUserCode(null)
+            })
           
        //history.push("/inventory")
       
@@ -116,7 +118,7 @@ function SignIn () {
               <div className="form-group">
                 <label for="inputPassword" className="sr-only">Password</label>
                 <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
-                {userCode === null ? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Incorrect Password</small> : <div></div>}
+                {userCode ?? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Login failed</small>}
               </div>
               <div className="checkbox mb-3">
                 <label>

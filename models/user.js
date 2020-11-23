@@ -73,10 +73,10 @@ userSchema.pre('save', function(next) {
 
 
 //ORIGINAL
-// userSchema.methods.comparePassword = async function(candidatePassword) {
-//  const result = await bcrypt.compare(candidatePassword, this.password)
-//  return result;
-// };
+userSchema.methods.comparePassword = async function(candidatePassword) {
+ const result = await bcrypt.compare(candidatePassword, this.password)
+ return result;
+};
 
 // userSchema.methods.comparePassword = function(candidatePassword, cb) {
 //   bcrypt.compare(candidatePassword, this.password, function(err, isMatch) {
