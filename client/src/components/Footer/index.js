@@ -18,11 +18,11 @@ function Footer (props) {
         </div>
         <div className="row" id="footer">
             <div className="col-12" id="footer-team">
-                <p>• Amin Bouzoita <img src={github} alt="github" className="github" /> |
-                Crystal Han <img src={github} alt="github" className="github" /> |
-                Eric Folenta <img src={github} alt="github" className="github" /> | 
-                Josh Sandberg <img src={github} alt="github" className="github" /> | 
-                Spencer Smith <img src={github} alt="github" className="github" /> •
+                <p>• Amin Bouzoita <a href="https://github.com/Aminbouzouita"><img src={github} alt="github" className="github" /></a> |
+                Crystal Han <a href="https://github.com/hancc1006"><img src={github} alt="github" className="github" /></a> |
+                Eric Folenta <a href="https://github.com/efolenta"><img src={github} alt="github" className="github" /></a> | 
+                Josh Sandberg <a href="https://github.com/jshsandberg"><img src={github} alt="github" className="github" /></a> | 
+                Spencer Smith <a href="https://github.com/spencer-alan"><img src={github} alt="github" className="github" /></a> •
                 </p>
             </div>
         </div>

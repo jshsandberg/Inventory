@@ -24,3 +24,8 @@
 #footer-team p {
     margin-bottom: 5px;
 }
+#footer hr {
+    border: 1px solid white;
+    background-image: none;
+    background: white;
+}
