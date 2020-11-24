@@ -13,7 +13,7 @@ module.exports = {
   },
   register: async (req, res) => {
     try {
-      let { name, email, username, password, inventory } = req.body;
+      let { name, email, username, password, inventory, business, phone } = req.body;
   
       // validate
   
@@ -46,7 +46,9 @@ module.exports = {
         email,
         username,
         password: passwordHash,
-        inventory
+        business,
+        industry,
+        phone
       });
       const savedUser = await newUser.save();
       res.json(savedUser);

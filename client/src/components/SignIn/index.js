@@ -64,11 +64,11 @@ function SignIn () {
                 </>
               )}
               <div className="form-group">
-              <label for="inputEmail" className="sr-only">Email Address</label>
+              <label htmlFor="inputEmail" className="sr-only">Email Address</label>
               <input name="username" onChange={handleInputChange} type="text" id="inputEmail" className="form-control" placeholder="Email address" />
               </div>
               <div className="form-group">
-                <label for="inputPassword" className="sr-only">Password</label>
+                <label htmlFor="inputPassword" className="sr-only">Password</label>
                 <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" />
                 {/* {userCode ?? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Login failed</small>} */}
               </div>

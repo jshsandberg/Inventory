@@ -15,11 +15,11 @@ function SideBar(props) {
             <img src={InventoryDealsLogo} id="logo" alt="logo"></img>
           </li>
           <li>
-            <Link to={"/inventory/user/" + id.id}>
+            <Link to={"/inventory/"}>
             <i class="fa fa-th" aria-hidden="true"></i> Dashboard</Link>
           </li>
           <li>
-            <Link to={"/inventory/user/form/" + id.id}>
+            <Link to={"/inventoryfill/"}>
             <i class="fa fa-plus" aria-hidden="true"></i> Add Inventory</Link>
           </li>
           <li>
