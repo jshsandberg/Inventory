@@ -10,6 +10,7 @@ import UserContext from "../../context/userContext";
 function SignUp() {
   const history = useHistory();
   const [values, setValues] = useState({});
+  const [error, setError] = useState();
   const { user, setUser } = useContext(UserContext);
 
   function handleChange(event) {
@@ -20,29 +21,34 @@ function SignUp() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // setErrors(validate(values));
-    // setIsSubmitting(true);
-    const newUser = {
-      name: values.firstName + " " + values.lastName,
-      email: values.email,
-      phone: values.phone,
-      business: values.business,
-      username: values.username,
-      password: values.password,
-      industry: values.industry
+
+    try {
+      const newUser = {
+        name: values.firstName + " " + values.lastName,
+        email: values.email,
+        phone: values.phone,
+        business: values.business,
+        username: values.username,
+        password: values.password,
+        industry: values.industry
+      }
+      await API.saveUser(newUser);
+      const loginRes = await API.loginUser({
+        username: newUser.username,
+        password: newUser.password
+      });
+      setUser({
+        token: loginRes.data.token,
+        user: loginRes.data.user
+      });
+      console.log(user);
+      localStorage.setItem("auth-token", loginRes.data.token);
+      history.push("/inventory");
+    } catch (err) {
+      if (err.response.data.msg) {
+        setError(err.response.data.msg);
+      }
     }
-    await API.saveUser(newUser);
-    const loginRes = await API.loginUser({
-      username: newUser.username,
-      password: newUser.password
-    });
-    setUser({
-      token: loginRes.data.token,
-      user: loginRes.data.user
-    });
-    console.log(user);
-    localStorage.setItem("auth-token", loginRes.data.token);
-    history.push("/inventory");
   };
 
   return (
@@ -53,6 +59,16 @@ function SignUp() {
           <h2 align="center">Signup Today</h2>
           <p>Welcome! We're happy that you've decided to start you journey to inventory bliss with us. Fill out the form below to get started.</p>
             <div className="form-row">
+              {error && (
+                <>
+                  <div class="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => setError(undefined)}>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </>
+              )}
             <div className="col-md-12 divider">
                 <h4 align="center">General Information</h4>
               </div>

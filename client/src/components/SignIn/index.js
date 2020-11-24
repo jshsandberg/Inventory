@@ -8,6 +8,7 @@ import API from "../../utils/API";
 function SignIn () {
   // const [userCode, setUserCode] = useState("")
   const [values, setValues] = useState({});
+  const [error, setError] = useState();
   const { user, setUser } = useContext(UserContext);
 
   const history = useHistory();
@@ -20,7 +21,8 @@ function SignIn () {
 
   async function handleFormSubmit(event) {
     event.preventDefault();
-    console.log("sumbitting login data")
+    // console.log("sumbitting login data")
+    try{
     const loginUser = {
       username: values.username,
       password: values.password,
@@ -35,8 +37,13 @@ function SignIn () {
     });
     console.log(user);
     localStorage.setItem("auth-token", loginRes.data.token);
-    history.push("/inventory");     
-  }
+    history.push("/inventory");
+    } catch (err) {
+      if (err.response.data.msg) {
+        setError(err.response.data.msg);
+      }
+    }   
+  }; 
 
 
   return (
@@ -46,13 +53,23 @@ function SignIn () {
           <div className="col-12">
             <form className="form-signin" onSubmit={handleFormSubmit}>
               <h1 className="h3 mb-3">Please sign in...</h1>
+              {error && (
+                <>
+                  <div class="alert alert-danger" role="alert">
+                    {error}
+                  </div>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close" onClick={() => setError(undefined)}>
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </>
+              )}
               <div className="form-group">
               <label for="inputEmail" className="sr-only">Email Address</label>
-              <input name="username" onChange={handleInputChange} type="" id="inputEmail" className="form-control" placeholder="Email address" required autofocus />
+              <input name="username" onChange={handleInputChange} type="text" id="inputEmail" className="form-control" placeholder="Email address" />
               </div>
               <div className="form-group">
                 <label for="inputPassword" className="sr-only">Password</label>
-                <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" required />
+                <input name="password" onChange={handleInputChange} type="password" id="inputPassword" className="form-control" placeholder="Password" />
                 {/* {userCode ?? <small style={{ fontWeight: "heavy" }} id="password-incorrect" class="form-text text-muted">Login failed</small>} */}
               </div>
               <div className="checkbox mb-3">
