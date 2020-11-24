@@ -12,9 +12,9 @@ router
   .route("/:id")
   .get(inventController.findById)
 
-// router
-//   .route("/user/:id")
-//   .get(userController.findById)
+router
+  .route("/user/:id")
+  .get(userController.findById)
 
 // Matches with "/api/inventory/:id" and puts inventory in
 router
@@ -24,7 +24,7 @@ router
 
 //matches with /api/inventory/:id and remove an item
 router
-  .route("/:id/remove")
+  .route("/remove/:id")
   .get(inventController.findById)
   .delete(inventController.remove);
 

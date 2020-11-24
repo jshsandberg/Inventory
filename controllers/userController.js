@@ -13,7 +13,7 @@ module.exports = {
   },
   register: async (req, res) => {
     try {
-      let { name, email, username, password, business, industry, phone } = req.body;
+      let { name, email, username, password, inventory, business, phone } = req.body;
   
       // validate
   
@@ -123,5 +123,12 @@ module.exports = {
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
+  },
+  findById: function(req, res) {
+    console.log(req.params)
+    db.User
+      .findById(req.params.id)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).son(err));
   },
 }
