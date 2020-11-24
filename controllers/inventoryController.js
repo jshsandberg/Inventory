@@ -29,16 +29,32 @@ module.exports = {
   },
   update: function(req, res) {
     db.Inventory
-    console.log(req.params.id)
-    console.log(req.body)
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
-      .then(dbModel => res.json(dbModel))
+    // console.log("THIS IS IT", req.params.id)
+    // console.log(req.body)
+      .findByIdAndUpdate(
+        {_id: req.params.id} , 
+        {
+          $set: {
+            quantity: req.body.quantity,
+            cycle: req.body.cycle,
+            cost: req.body.cost,
+            value: req.body.value,
+            sold: req.body.sold,
+            userId: req.body.userId
+          }
+        }, 
+       )
+      .then(dbModel => {console.log(dbModel);res.json(dbModel)})
       .catch(err => res.status(422).json(err));
   },
   remove: function(req, res) {
+    //console.log("i am here")
     db.Inventory
       .findById({ _id: req.params.id })
-      .then(dbModel => dbModel.remove())
+      .then(dbModel => {
+        dbModel.remove();
+      }
+        )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }

@@ -18,14 +18,18 @@ router
 
 // Matches with "/api/inventory/:id" and puts inventory in
 router
-  .route("/:id/update")
+  .route("/update/:id")
   .get(inventController.findById)
   .put(inventController.update);
 
 //matches with /api/inventory/:id and remove an item
 router
-  .route("/:id/remove")
+  .route("/remove/:id")
   .get(inventController.findById)
   .delete(inventController.remove);
+
+router
+  .route("/delete/:id")
+  .delete(inventController.remove)
 
 module.exports = router;

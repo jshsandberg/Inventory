@@ -61,7 +61,7 @@ function Shipment(props) {
                
                       <div className="tab-pane fade show" id={`list-${shipment.name}`} role="tabpanel" aria-labelledby={`list-${shipment.name}-list`}>
                         <p>Last Bought: {shipment.dateAdded}</p>
-                        <p>Day Inventory will be Arriving: {findDate(shipment.cycle)}</p>
+                        {/* <p>Day Inventory will be Arriving: {findDate(shipment.cycle)}</p> */}
                         <p>Unit Price: ${shipment.cost}</p>
                         <p>Sale Price: ${shipment.value}</p>
                         <p>Units Sold: {shipment.sold}</p>

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useHistory } from "react-router-dom"
 import "./style.css"
 
 function InventoryForm() {
+
+    const history = useHistory();
 
     let id  = useParams();
     console.log(id.id)
@@ -40,13 +42,14 @@ function InventoryForm() {
         // , userCode
         ).then(res => {
             console.log(res)
-           res.status === 200 ? setIsSuccessful(true) : console.log("it didnt work")    
+           //res.status === 200 ? setIsSuccessful(true) : console.log("it didnt work")    
             // How to remove inputs without reloading
             //window.location.reload()
+            history.push("/inventory/user/" + id.id)
         })
           .catch(err => console.log(err))
 
-          console.log(isSuccessful)
+          //console.log(isSuccessful)
     }
 
     
@@ -98,7 +101,7 @@ function InventoryForm() {
                     <label className="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <br></br>
-                <button onClick={handleSubmit} type="submit" className="btn btn-primary">Submit</button>
+                <Link to={"inventory/user/" + id.id}><button onClick={handleSubmit} type="submit" className="btn btn-primary">Submit</button></Link>
             </form>
             :
             <div className="row">

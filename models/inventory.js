@@ -34,7 +34,8 @@ const inventSchema = new Schema({
   cost: String,
   value: String,
   sold: String,
-  userId: String
+  userId: String,
+  
 });
 
 const Inventory = mongoose.model("Inventory", inventSchema);

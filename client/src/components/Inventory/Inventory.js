@@ -66,6 +66,7 @@ function InventoryItems() {
   
 
   const [item, setItem] = useState({})
+  const [itemId, setItemId] = useState("")
   const [inventoryState, setInventoryState] = useState([]);
   const [inventoryStateBeforeRender, setInventoryStateBeforeRender] = useState([]);
   const [rerender, setRerender] = useState(false)
@@ -79,11 +80,11 @@ function InventoryItems() {
     // eslint-disable-next-line react-hooks/exhaustive-deps    
     }, [rerender]);
 
-    let id = useParams()
+    let user = useParams()
     //console.log(inventoryState)
 
     const beforeMount = () => {
-        API.getUserbyId(id.id).then(res => {
+        API.getUserbyId(user.id).then(res => {
             //console.log(res.data.inventory)
 
             const inventoryArr = []
@@ -106,6 +107,17 @@ function InventoryItems() {
 
 
 
+
+
+// const deleteInventory = (id) => {
+//     API.deleteInventory(id)
+//     .then(res => {
+//         console.log(res)
+//     })
+//     API.updateUser(user.id)
+//     .then(res => console.log(res))
+// }
+
   const updateInventory = (newItem) => {
     API.updateInventory(newItem._id, newItem)
     .then(res => console.log(res))
@@ -121,11 +133,11 @@ function InventoryItems() {
                         <tr>
                             <th scope="col" width="10%">#</th>
                             <th scope="col" width="30%">Item Name</th>
-                            <th scope="col" width="10%">Unit Price</th>
+                            <th scope="col" width="15%">Unit Price</th>
                             <th scope="col" width="10%">Date Added</th>
-                            <th scope="col" width="10%">In Stock</th>
+                            <th scope="col" width="15%">In Stock</th>
                             <th scope="col" width="10%">Update</th>
-                            <th scope="col" width="10%">Delete</th>
+                            {/* <th scope="col" width="10%">Delete</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -151,13 +163,16 @@ function InventoryItems() {
                                             </button>
                                         </td>
                                         <td>
-                                            <button
+                                            {/* <button
                                                 type="button"
                                                 className="btn btn-primary"
                                                 style={{ backgroundColor: "red" }}
+                                                onClick={() => {
+                                                    //setItemId({...item}); 
+                                                deleteInventory(item._id)}}
                                                 >
                                             Delete
-                                            </button>
+                                            </button> */}
                                         </td>
                                 </tr>
                             </>
