@@ -35,7 +35,6 @@ export default {
   getInventory: function(id) {
     return axios.get("/api/inventory/" + id)
   },
-
   deleteInventory: function(id) {
     return axios.delete("/api/inventory/delete/" + id)
   },

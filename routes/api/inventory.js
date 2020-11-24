@@ -12,9 +12,9 @@ router
   .route("/:id")
   .get(inventController.findById)
 
-// router
-//   .route("/user/:id")
-//   .get(userController.findById)
+router
+  .route("/user/:id")
+  .get(userController.findById)
 
 // Matches with "/api/inventory/:id" and puts inventory in
 router

@@ -19,7 +19,7 @@ function NavBar(props) {
             <div className="d-flex flex-grow-1">
                 <span className="w-100 d-lg-none d-block"></span>
                 <Link className="navbar-brand" to="/">
-                Inventory
+                Shelf Keeper
                 </Link>
                 <div className="w-100 text-right">
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">

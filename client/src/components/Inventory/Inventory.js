@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import UserContext from "../../context/userContext";
 import { useParams } from 'react-router-dom';
 import Shipment from "../Shipment/index"
 
@@ -29,7 +30,7 @@ const Modal = (props) => {
     <div
         className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div className="modal-dialog">
@@ -64,7 +65,7 @@ const Modal = (props) => {
 
 function InventoryItems() {
   
-
+	const { user } = useContext(UserContext);
   const [item, setItem] = useState({})
   const [itemId, setItemId] = useState("")
   const [inventoryState, setInventoryState] = useState([]);
@@ -84,9 +85,11 @@ function InventoryItems() {
     //console.log(inventoryState)
 
     const beforeMount = () => {
-        API.getUserbyId(user.id).then(res => {
-            //console.log(res.data.inventory)
 
+			console.log(user);
+        API.getUserbyId(user.user.id).then(res => {
+            //console.log(res.data.inventory)
+						console.log(res);
             const inventoryArr = []
        
             for (let i = 0; i < res.data.inventory.length; i++){
