@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { useHistory } from "react-router-dom";
 import UserContext from "../../context/userContext";
 import "./style.css";
 import { Link } from "react-router-dom";
 
 function NavBar(props) {
 
-    const { user, setUser } = useContext(UserContext);
+    const { setUser } = useContext(UserContext);
     const logout = () => {
         setUser({
             token: undefined,
