@@ -11,7 +11,7 @@ function SideBar(props) {
   return (  
     <div className="sidenav">
       <ul>
-          <li>
+          <li id="logo-li">
             <img src={InventoryDealsLogo} id="logo" alt="logo"></img>
           </li>
           <li>
