@@ -172,7 +172,7 @@ function SignUp() {
                 </label>
               </div>
             </div>
-            <a href="/signin"><button type="submit" className="inverted" id="signup-login-btn">Sign Up</button></a>
+              <button type="submit" className="inverted" id="signup-login-btn">Sign Up</button>
           </form>
         </div>
       </div>

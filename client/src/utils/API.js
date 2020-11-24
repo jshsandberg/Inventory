@@ -35,9 +35,16 @@ export default {
   getInventory: function(id) {
     return axios.get("/api/inventory/" + id)
   },
-  updateInventory: function(id, inventoryData) {
-    console.log("id", id)
-    console.log("body", inventoryData)
-    return axios.put("/api/inventory/update/" + id , inventoryData)
+  deleteInventory: function(id) {
+    return axios.delete("/api/inventory/delete/" + id)
   },
+
+  updateInventory: function(id, inventoryData) {
+    return axios.put("/api/inventory/update/" + id, inventoryData)
+  },
+  // updateUser: function(id, userId) {
+  //   console.log("id", id)
+  //   console.log("userid", userId)
+  //   return axios.put("/api/user/update" + userId, id)
+  // }
 };
