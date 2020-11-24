@@ -81,7 +81,6 @@ function InventoryItems() {
     // eslint-disable-next-line react-hooks/exhaustive-deps    
     }, [rerender]);
 
-    let user = useParams()
     //console.log(inventoryState)
 
     const beforeMount = () => {
