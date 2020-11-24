@@ -1,10 +1,7 @@
 import React from "react";
 import "./style.css";
-import HomePageLogo from "./../../assets/homepagelogo.png";
-import InventoryLogo from "./../../assets/inventorylogo.jpg";
-import LogoutLogo from "./../../assets/logoutlogo.jpg";
 import InventoryDealsLogo from "./../../assets/logo.png";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 function SideBar(props) {
 
