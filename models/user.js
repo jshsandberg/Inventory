@@ -37,7 +37,7 @@ const userSchema = new Schema({
     type:String,
     required:true
   }, 
-  inventory: []
+  inventory: [{ type: Schema.Types.ObjectId, ref: 'Inventory' }]
 });
 
 module.exports = mongoose.model("user", userSchema);
