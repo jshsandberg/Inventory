@@ -98,9 +98,19 @@ function InventoryItems() {
 
                 for (let i = 0; i < userInventory.length; i++){
                     const inventoryItems = await API.getInventory(userInventory[i]);
-                    inventoryArr.push(inventoryItems.data)
-                
+                    console.log(inventoryItems.data)
+                    if (inventoryItems.data != null) {
+                        inventoryArr.push(inventoryItems.data)
+                    }
+                 
                 }
+
+                
+                // for (let i = 0; i < inventoryArr.length; i++) {
+                //     if (inventoryArr[i] === null) {
+                //         inventoryArr.splice(i, 1)
+                //     }
+                // }
 
                 console.log(inventoryArr)
                 setInventoryState(inventoryArr)
@@ -118,12 +128,8 @@ function InventoryItems() {
   }
 
   const deleteInventory = async (id) => {
-    let token = localStorage.getItem("auth-token")
-
-    const decoded = await jwt.verify(token, "secret");
-
-      //const deleteInventory = await API.deleteInventory(id);
-      const updateUserInventory = await API.updateUser(decoded.id)
+      const deleteInventory = await API.deleteInventory(id);
+      window.location.reload();
   }
 
     return (

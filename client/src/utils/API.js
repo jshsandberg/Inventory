@@ -42,7 +42,7 @@ export default {
   updateInventory: function(id, inventoryData) {
     return axios.put("/api/inventory/update/" + id, inventoryData)
   },
-  updateUser: function(id) {
-    return axios.put("/api/user/update", id)
+  updateUser: function(userId, id) {
+    return axios.put("/api/user/update/" + userId, id)
   }
 };

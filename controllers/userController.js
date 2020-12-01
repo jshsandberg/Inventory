@@ -137,9 +137,9 @@ module.exports = {
   },
   update: async (req, res) => {
     try {
-      const updateUser = await db.User.findOne()
-      console.log(updateUser)
-      //updateUser.inventory
+      //console.log(req.params.userId)
+      const updateUser = await db.User.findByIdAndUpdate(req.params.userId)
+      console.log(req.body)
     }
    catch (err) {
     res.status(500).json({ error: err.message });

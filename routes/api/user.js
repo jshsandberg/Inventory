@@ -19,7 +19,7 @@ router.route("/login")
 router.route("/validate")
   .post(userController.valid);
 
-router.route("/update")
+router.route("/update/:userId")
   .put(userController.update)
 
 router.route("/delete")
