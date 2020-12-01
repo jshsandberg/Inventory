@@ -1,12 +1,10 @@
 import React from "react";
 import "./style.css";
 import InventoryDealsLogo from "./../../assets/logo.png";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-function SideBar(props) {
+function SideBar() {
 
-  let id = useParams()
-  console.log(id.id)
 
   return (  
     <div className="sidenav">

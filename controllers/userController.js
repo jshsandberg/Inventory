@@ -39,21 +39,26 @@ module.exports = {
   
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password, salt);
-      // console.log(passwordHash);
+      //console.log(passwordHash);
+      //console.log(name);
   
       const newUser = new db.User({
-        name,
-        email,
-        username,
+        name: req.body.name,
+        email: req.body.email,
+        username: req.body.username,
         password: passwordHash,
-        business,
-        industry,
-        phone
+        business: req.body.business,
+        industry: req.body.industry,
+        phone: req.body.phone
       });
+      //console.log("i am herer")
       const savedUser = await newUser.save();
+      // It is saving but it still gives me an error
+      console.log(savedUser)
       res.json(savedUser);
   
-    } catch (err) {
+    } 
+    catch (err) {
       res.status(500).json({ error: err.message });
     }
   },
@@ -62,6 +67,7 @@ module.exports = {
       const { username, password } =req.body;
 
       // validate
+      
       if (!username || !password) {
         return res.status(400).json({ msg: "Not all fields have been entered." });
       }
@@ -73,14 +79,19 @@ module.exports = {
           .json({ msg: "Username does not exist!"});
       }
 
+      
+
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
         return res
           .status(400)
           .json({ msg: "Invalid password!"});
       }
-
-      const token =jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+    
+      const token =jwt.sign({
+         exp: Math.floor(Date.now() / 1000) + (60 * 60),
+         id: user._id },
+         "secret" );
       res.json({
         token, 
         user: {
@@ -123,6 +134,16 @@ module.exports = {
     } catch (err) {
       res.status(500).json({ error: err.message });
     }
+  },
+  update: async (req, res) => {
+    try {
+      const updateUser = await db.User.findOne()
+      console.log(updateUser)
+      //updateUser.inventory
+    }
+   catch (err) {
+    res.status(500).json({ error: err.message });
+   }
   },
   findById: function(req, res) {
     console.log(req.params)

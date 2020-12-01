@@ -1,18 +1,16 @@
 import React, { useState } from "react";
 import API from "../../utils/API";
-import { Link, useParams, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "./style.css"
 
+const jwt = require('jsonwebtoken')
+
 function InventoryForm() {
-
-    const history = useHistory();
-
-    let id  = useParams();
-    console.log(id.id)
+    
 
     const [inventoryObject, setInventoryObject] = useState({});
     const [isSuccessful, setIsSuccessful] = useState(false);
-    //const [userCode, setUserCode] = useState("5fb6e9c7439e183e44657964")
+
 
 
     const sectionStyle = {
@@ -28,7 +26,10 @@ function InventoryForm() {
 
     const handleSubmit = e => {
         e.preventDefault();
-        //console.log(inventoryObject)
+        let token = localStorage.getItem("auth-token")
+
+        const decoded =  jwt.verify(token, "secret");
+        console.log(decoded)
         API.saveinventory({
             name: inventoryObject.name,
             quantity:  inventoryObject.amount + " " + inventoryObject.unit,
@@ -37,19 +38,10 @@ function InventoryForm() {
             cost: inventoryObject.cost,
             value: inventoryObject.value,
             sold: inventoryObject.sold,
-            userId: id.id
+            userId: decoded.id
         }
-        // , userCode
-        ).then(res => {
-            console.log(res)
-           //res.status === 200 ? setIsSuccessful(true) : console.log("it didnt work")    
-            // How to remove inputs without reloading
-            //window.location.reload()
-            history.push("/inventory/user/" + id.id)
-        })
-          .catch(err => console.log(err))
-
-          //console.log(isSuccessful)
+        ).then(setIsSuccessful(true))
+          .catch(err => console.log(err));
     }
 
     
@@ -101,7 +93,7 @@ function InventoryForm() {
                     <label className="form-check-label" for="exampleCheck1">Check me out</label>
                 </div>
                 <br></br>
-                <Link to={"inventory/user/" + id.id}><button onClick={handleSubmit} type="submit" className="btn btn-primary">Submit</button></Link>
+                <button onClick={handleSubmit} type="submit" className="btn btn-primary">Submit</button>
             </form>
             :
             <div className="row">

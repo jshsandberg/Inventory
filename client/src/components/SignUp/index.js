@@ -32,7 +32,9 @@ function SignUp() {
         password: values.password,
         industry: values.industry
       }
+      console.log(newUser)
       await API.saveUser(newUser);
+      //console.log("i am here")
       const loginRes = await API.loginUser({
         username: newUser.username,
         password: newUser.password

@@ -29,7 +29,7 @@ export default {
   },
   // Save Inventory to a user
   saveinventory: function(inventoryData) {
-    return axios.post("/api/inventory", inventoryData)
+    return axios.post("/api/inventoryfill/", inventoryData)
   },
   
   getInventory: function(id) {
@@ -42,9 +42,7 @@ export default {
   updateInventory: function(id, inventoryData) {
     return axios.put("/api/inventory/update/" + id, inventoryData)
   },
-  // updateUser: function(id, userId) {
-  //   console.log("id", id)
-  //   console.log("userid", userId)
-  //   return axios.put("/api/user/update" + userId, id)
-  // }
+  updateUser: function(id) {
+    return axios.put("/api/user/update", id)
+  }
 };
