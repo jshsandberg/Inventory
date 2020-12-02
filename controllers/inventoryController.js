@@ -14,13 +14,13 @@ module.exports = {
     db.Inventory
       .create(req.body)
       .then(dbModel => {
-        console.log(dbModel);
+        console.log(req.body);
         res.status(200)
-        db.User.updateOne({_id: dbModel.userId }, { $push: {inventory: dbModel}})
-        .then(res => {
-          //res.status(200)
-          console.log("updated")
-        })
+        db.User.updateOne({_id: req.body.userId }, { $push: {inventory: dbModel}})
+        .then(
+          res.json({message: `${req.body.name} has been added to your inventory!`})
+          
+        )
     
           //res.json(dbModel)
       

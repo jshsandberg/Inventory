@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import UserContext from "../../context/userContext";
-import { useParams } from 'react-router-dom';
 import Shipment from "../Shipment/index"
+
+
 
 //API methods
 import API from "../../utils/API";
 
 import "./style.css"
+import { resolve } from "path";
+
+const jwt = require('jsonwebtoken')
 
 
 
@@ -23,8 +27,13 @@ const Modal = (props) => {
     setInput({...input, [name]:value})
   }
 
-  useEffect(()=> setInput(item), [props])
+  useEffect(()=> {
+      setInput(item);
+    }, [props]);
 
+ const forceUpdate = () => {
+     window.location.reload(); 
+ }
 
   return (
     <div
@@ -53,7 +62,7 @@ const Modal = (props) => {
                     <p>In Stock: </p><input onChange={handleInputChange} name="quantity" value={input.quantity} placeholder={item.quantity}></input>
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button onClick={forceUpdate} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button onClick={() => updateInventory(input, item.i)} type="button" className="btn btn-primary">Save changes</button>
                 </div>
             </div>
@@ -65,64 +74,62 @@ const Modal = (props) => {
 
 function InventoryItems() {
   
-	const { user } = useContext(UserContext);
+	// const { user } = useContext(UserContext);
   const [item, setItem] = useState({})
-  const [itemId, setItemId] = useState("")
   const [inventoryState, setInventoryState] = useState([]);
-  const [inventoryStateBeforeRender, setInventoryStateBeforeRender] = useState([]);
-  const [rerender, setRerender] = useState(false)
 
 
-  useEffect(() => {
-      
-    beforeMount();
-    setInventoryState(inventoryStateBeforeRender)
-    //console.log(inventoryState)
-    // eslint-disable-next-line react-hooks/exhaustive-deps    
-    }, [rerender]);
+  useEffect(() => beforeMount(), []);
 
-    //console.log(inventoryState)
 
-    const beforeMount = () => {
+    const beforeMount = async () => {
 
-			console.log(user);
-        API.getUserbyId(user.user.id).then(res => {
-            //console.log(res.data.inventory)
-						console.log(res);
+        let token = localStorage.getItem("auth-token")
+
+        const decoded = await jwt.verify(token, "secret");
+
+
+        try {
+            const newUser = await API.getUserbyId(decoded.id)
+            
+            const userInventory = newUser.data.inventory
+
             const inventoryArr = []
-       
-            for (let i = 0; i < res.data.inventory.length; i++){
-                API.getInventory(res.data.inventory[i])
-                .then(res => {
-                    inventoryArr.push(res.data)
-              
-                    setRerender(true)
-                    //console.log(inventoryArr)
-                 })
-             }
-            setInventoryStateBeforeRender(inventoryArr)
 
-            //setUserCode(res.data[0]._id)
-    })
-}
+                for (let i = 0; i < userInventory.length; i++){
+                    const inventoryItems = await API.getInventory(userInventory[i]);
+                    console.log(inventoryItems.data)
+                    if (inventoryItems.data != null) {
+                        inventoryArr.push(inventoryItems.data)
+                    }
+                 
+                }
 
+                
+                // for (let i = 0; i < inventoryArr.length; i++) {
+                //     if (inventoryArr[i] === null) {
+                //         inventoryArr.splice(i, 1)
+                //     }
+                // }
 
+                console.log(inventoryArr)
+                setInventoryState(inventoryArr)
+        }
+        
+        catch (err) {
+            console.log(err)
+        }
 
-
-
-
-// const deleteInventory = (id) => {
-//     API.deleteInventory(id)
-//     .then(res => {
-//         console.log(res)
-//     })
-//     API.updateUser(user.id)
-//     .then(res => console.log(res))
-// }
+    }
 
   const updateInventory = (newItem) => {
     API.updateInventory(newItem._id, newItem)
     .then(res => console.log(res))
+  }
+
+  const deleteInventory = async (id) => {
+      const deleteInventory = await API.deleteInventory(id);
+      window.location.reload();
   }
 
     return (
@@ -135,11 +142,11 @@ function InventoryItems() {
                         <tr>
                             <th scope="col" width="10%">#</th>
                             <th scope="col" width="30%">Item Name</th>
-                            <th scope="col" width="15%">Unit Price</th>
+                            <th scope="col" width="10%">Unit Price</th>
                             <th scope="col" width="10%">Date Added</th>
-                            <th scope="col" width="15%">In Stock</th>
+                            <th scope="col" width="10%">In Stock</th>
                             <th scope="col" width="10%">Update</th>
-                            {/* <th scope="col" width="10%">Delete</th> */}
+                            <th scope="col" width="10%">Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -165,7 +172,7 @@ function InventoryItems() {
                                             </button>
                                         </td>
                                         <td>
-                                            {/* <button
+                                            <button
                                                 type="button"
                                                 className="btn btn-primary"
                                                 style={{ backgroundColor: "red" }}
@@ -174,7 +181,7 @@ function InventoryItems() {
                                                 deleteInventory(item._id)}}
                                                 >
                                             Delete
-                                            </button> */}
+                                            </button>
                                         </td>
                                 </tr>
                             </>

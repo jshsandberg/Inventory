@@ -4,6 +4,7 @@ const auth = require("../../middleware/auth");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
 const db = require("../../models");
+const user = require("../../models/user");
 const expiresIn = 3600;
 
 router.route("/")
@@ -17,6 +18,9 @@ router.route("/login")
 
 router.route("/validate")
   .post(userController.valid);
+
+router.route("/update/:userId")
+  .put(userController.update)
 
 router.route("/delete")
   .delete(auth, userController.delete);

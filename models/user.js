@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username:{
     type:String,
-    required:true,
+    //required:true,
     unique:true
   },
   name: {
     //This is the first and last name of the User
     type: String,
-    required: true
+    //required: true
   },
   email: {
       //This is the user's email
@@ -35,7 +35,7 @@ const userSchema = new Schema({
   },
   password:{
     type:String,
-    required:true
+    //required:true
   }, 
   inventory: [{ type: Schema.Types.ObjectId, ref: 'Inventory' }]
 });
