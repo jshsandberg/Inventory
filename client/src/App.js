@@ -10,6 +10,7 @@ import Contact from "./pages/Contact.js";
 import Inventory from "./pages/Inventory";
 import InventoryFill from "./pages/InventoryFill";
 import UserContext from "./context/userContext";
+import Profit from "./pages/Profit"
 
 function App() {
   const [user, setUser] = useState({
@@ -57,6 +58,7 @@ function App() {
         <Route exact path="/signin" component={SignIn} />
         <Route exact path="/admin " component={Admin} />
         <Route exact path="/inventoryfill" component={InventoryFill} />
+        <Route exact path="/profitandloss" component={Profit} />
       </UserContext.Provider>
     </Router>
 

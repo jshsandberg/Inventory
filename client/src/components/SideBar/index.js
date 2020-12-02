@@ -28,7 +28,8 @@ function SideBar() {
             <p><i class="fa fa-envelope" aria-hidden="true"></i> Invoices</p>
           </li>
           <li>
-          <p><i class="fa fa-balance-scale" aria-hidden="true"></i> Profits &amp; Losses</p>
+            <Link to={"/profitandloss"}>
+          <i class="fa fa-balance-scale" aria-hidden="true"></i> Profits &amp; Losses</Link>
 
           </li>
           <li>

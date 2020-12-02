@@ -3,12 +3,12 @@ import UserContext from "../../context/userContext";
 import Shipment from "../Shipment/index"
 
 
-
 //API methods
 import API from "../../utils/API";
 
 import "./style.css"
 import { resolve } from "path";
+import Graph from "../Linegraph/Linegraph"
 
 const jwt = require('jsonwebtoken')
 
@@ -189,11 +189,18 @@ function InventoryItems() {
                         })}
                     </tbody>
                 </table>
-            </div >
+                <div>
+                    <Shipment
+                        shipment={inventoryState} >
+                    </Shipment>
+                </div>
+                <div>
+                    <Graph />
+                </div>
 
-        <Shipment
-        shipment={inventoryState} >
-        </Shipment>
+            </div >
+      
+
 
         </>
     )
