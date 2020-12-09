@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
 }
 // Connect to the Mongo DB
 mongoose
-	.connect(process.env.MONGODB_URI || "mongodb://localhost:/project-3", {
+	.connect(process.env.MONGODB_URI, {
 		useNewUrlParser: true,
 		useFindAndModify: false,
 		useUnifiedTopology: true,
