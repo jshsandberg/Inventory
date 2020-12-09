@@ -24,7 +24,7 @@ function InventoryForm() {
 		e.preventDefault();
 		let token = localStorage.getItem("auth-token");
 
-		const decoded = jwt.verify(token, process.env.JWT_SECRET);
+		const decoded = jwt.verify(token, "secret");
 		console.log(decoded);
 		API.saveinventory({
 			name: inventoryObject.name,

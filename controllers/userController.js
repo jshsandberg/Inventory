@@ -31,20 +31,16 @@ module.exports = {
 			}
 
 			if (password.length < 5) {
-				return res
-					.status(400)
-					.json({
-						msg: "The password needs to be at least 5 characters long.",
-					});
+				return res.status(400).json({
+					msg: "The password needs to be at least 5 characters long.",
+				});
 			}
 
 			const existingUser = await db.User.findOne({ username });
 			if (existingUser) {
-				return res
-					.status(400)
-					.json({
-						msg: "An account with this username has already been created",
-					});
+				return res.status(400).json({
+					msg: "An account with this username has already been created",
+				});
 			}
 
 			const existingEmail = await db.User.findOne({ email });
@@ -104,7 +100,7 @@ module.exports = {
 					exp: Math.floor(Date.now() / 1000) + 60 * 60,
 					id: user._id,
 				},
-				process.env.JWT_SECRET
+				"secret"
 			);
 			res.json({
 				token,
@@ -125,7 +121,7 @@ module.exports = {
 				return res.json(false);
 			}
 
-			const verified = jwt.verify(token, process.env.JWT_SECRET);
+			const verified = jwt.verify(token, "secret");
 			if (!verified) {
 				return res.json(false);
 			}

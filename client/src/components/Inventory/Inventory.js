@@ -110,7 +110,7 @@ function InventoryItems() {
 	const beforeMount = async () => {
 		let token = localStorage.getItem("auth-token");
 
-		const decoded = await jwt.verify(token, process.env.JWT_SECRET);
+		const decoded = await jwt.verify(token, "secret");
 
 		try {
 			const newUser = await API.getUserbyId(decoded.id);
