@@ -1,30 +1,19 @@
 const router = require("express").Router();
 const userController = require("../../controllers/userController");
 const auth = require("../../middleware/auth");
-const passport = require("passport");
-const jwt = require("jsonwebtoken");
-const db = require("../../models");
-const user = require("../../models/user");
-const expiresIn = 3600;
 
-router.route("/")
-  .get(auth, userController.getUser);
+router.route("/").get(auth, userController.getUser);
 
-router.route("/register")
-  .post(userController.register);
+router.route("/register").post(userController.register);
 
-router.route("/login")
-  .post(userController.login);
+router.route("/login").post(userController.login);
 
-router.route("/validate")
-  .post(userController.valid);
+router.route("/validate").post(userController.valid);
 
-router.route("/update/:userId")
-  .put(userController.update)
+router.route("/update/:userId").put(userController.update);
 
-router.route("/delete")
-  .delete(auth, userController.delete);
-  //.get(userController.findById)
+router.route("/delete").delete(auth, userController.delete);
+//.get(userController.findById)
 // router.route("/signup").post(userController.create);
 
 // Matches with "/api/user/:id"
@@ -32,11 +21,11 @@ router.route("/delete")
 //   .route("/:username")
 //   .get(userController.find)
 //   .put(userController.update)
-  //.delete(userController.remove);
+//.delete(userController.remove);
 
 // router.post('/signin', passport.authenticate("local"), (req,res)=> {
 //   res.json(req.user)
-// }); 
+// });
 
 // router
 //   .route("/:id")
@@ -51,7 +40,7 @@ router.route("/delete")
 //   res.json({...req.user._doc, token})
 //   //console.log(res)
 //   // res.send(res.json())
-// }); 
+// });
 
 // router.post("/validate", ({body:{token}},res)=> {
 //   //console.log(token)
