@@ -114,7 +114,7 @@ function InventoryItems() {
 
 		try {
 			const newUser = await API.getUserbyId(decoded.id);
-
+			console.log(newUser);
 			const userInventory = newUser.data.inventory;
 
 			const inventoryArr = [];
