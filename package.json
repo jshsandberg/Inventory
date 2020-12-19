@@ -38,5 +38,6 @@
     "redux-react-session": "^2.6.1",
     "serv": "^0.2.4",
     "use-force-update": "^1.0.7"
-  }
+  },
+  "proxy": "http://localhost:3001"
 }

@@ -7,7 +7,7 @@ export default {
     return axios.get("/api/user/" + username);
   },
   getUserbyId: function(id) {
-    return axios.get("/api/inventory/user/" + id)
+    return axios.post("/api/inventory/user/" + id)
   },
   // Deletes the user with the given id
   deleteuser: function(id) {

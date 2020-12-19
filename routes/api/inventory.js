@@ -14,7 +14,7 @@ router
 
 router
   .route("/user/:id")
-  .get(userController.findById)
+  .post(userController.findById)
 
 // Matches with "/api/inventory/:id" and puts inventory in
 router
