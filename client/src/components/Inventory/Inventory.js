@@ -115,6 +115,12 @@ function InventoryItems() {
 		try {
 			const newUser = await API.getUserbyId(decoded.id);
 			console.log(newUser);
+
+
+			const testUser = await API.getUserbyId("5fdd8e2995b3b61fd0a6bda9")
+			console.log(testUser)
+
+
 			const userInventory = newUser.data.inventory;
 
 			const inventoryArr = [];
