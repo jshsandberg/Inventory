@@ -10,7 +10,7 @@ router.route("/")
 
 router
   .route("/:id")
-  .get(inventController.findById)
+  .post(inventController.findById)
 
 router
   .route("/user/:id")
