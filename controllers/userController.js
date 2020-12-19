@@ -153,10 +153,19 @@ module.exports = {
 			res.status(500).json({ error: err.message });
 		}
 	},
-	findById: function (req, res) {
-		console.log(req.params);
-		db.User.findById(req.params.id)
-			.then((dbModel) => res.json(dbModel))
-			.catch((err) => res.status(422).son(err));
+	findById: async (req, res) => {
+		//console.log("i am here", req.params);
+
+		try {
+			const foundUser = await db.User.findById(req.params.id)
+			//console.log(foundUser)
+			 
+			res.json(foundUser)
+		} catch (err) {
+			res.status(500)
+		}
+		// db.User.findById(req.params.id)
+		// 	.then((dbModel) => res.json(dbModel))
+		// 	.catch((err) => res.status(422).son(err));
 	},
 };
