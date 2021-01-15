@@ -11,7 +11,7 @@ Group project for UCI Bootcamp program with Amin Bouzoita, Crystal Han, Eric Fol
 
 ### Deployed Link
 
-(Coming Soon)
+https://shelf-keeper-jshsandberg.herokuapp.com/
 
 ### Objective
 To make a web application that allows the user to track their inventory in their stores or warehouses to be ablr to make smarter business decisions. It will also help to keep on top of diminishing stock. 
@@ -27,9 +27,4 @@ To make a web application that allows the user to track their inventory in their
 -React
 -Node.js
 
-### Screenshot
 
-(Coming Soon)
-
-### License
-[MIT License used for this project](../main/LICENSE)
